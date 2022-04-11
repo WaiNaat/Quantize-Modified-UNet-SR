@@ -1,0 +1,1349 @@
+UNet2(
+  (inc): inconv(
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (down1): down(
+    (mpconv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): one_conv(
+        (conv): Sequential(
+          (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+          (1): Sequential(
+            (0): ReLU(inplace=True)
+            (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+          )
+        )
+      )
+    )
+  )
+  (down2): down(
+    (mpconv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): one_conv(
+        (conv): Sequential(
+          (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+          (1): Sequential(
+            (0): ReLU(inplace=True)
+            (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+          )
+        )
+      )
+    )
+  )
+  (down3): down(
+    (mpconv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): one_conv(
+        (conv): Sequential(
+          (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+          (1): Sequential(
+            (0): ReLU(inplace=True)
+            (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+          )
+        )
+      )
+    )
+  )
+  (down4): down(
+    (mpconv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): one_conv(
+        (conv): Sequential(
+          (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+          (1): Sequential(
+            (0): ReLU(inplace=True)
+            (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+          )
+        )
+      )
+    )
+  )
+  (up1): up(
+    (up): (Quant_ConvTranspose2d() weight_bit=4, full_precision_flag=False)
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (up2): up(
+    (up): (Quant_ConvTranspose2d() weight_bit=4, full_precision_flag=False)
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (up3): up(
+    (up): (Quant_ConvTranspose2d() weight_bit=4, full_precision_flag=False)
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (up4): up(
+    (up): (Quant_ConvTranspose2d() weight_bit=4, full_precision_flag=False)
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (up5): up(
+    (up): (Quant_ConvTranspose2d() weight_bit=4, full_precision_flag=False)
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (outc): outconv(
+    (conv): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+  )
+  (up_s1): up_s(
+    (upconv): Sequential(
+      (0): (Quant_ConvTranspose2d() weight_bit=4, full_precision_flag=False)
+      (1): one_conv(
+        (conv): Sequential(
+          (0): (Quant_Conv2d() weight_bit=4, full_precision_flag=False)
+          (1): Sequential(
+            (0): ReLU(inplace=True)
+            (1): QuantAct(activation_bit=4, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+          )
+        )
+      )
+    )
+  )
+)
+
+Testing Teacher Model:  Average PSNR: 30.0925  SSIM: 0.8822
+
+
+===> Epoch 1 starts:
+Training: Average Loss: 0.0756
+Testing:  Average PSNR: 26.5113  SSIM: 0.7400
+
+===> Epoch 2 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5247  SSIM: 0.7394
+
+===> Epoch 3 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5187  SSIM: 0.7397
+
+===> Epoch 4 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5139  SSIM: 0.7397
+
+===> Epoch 5 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5172  SSIM: 0.7394
+
+===> Epoch 6 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5272  SSIM: 0.7403
+
+===> Epoch 7 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5045  SSIM: 0.7396
+
+===> Epoch 8 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5194  SSIM: 0.7398
+
+===> Epoch 9 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5090  SSIM: 0.7396
+
+===> Epoch 10 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5174  SSIM: 0.7396
+
+===> Epoch 11 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5086  SSIM: 0.7392
+
+===> Epoch 12 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5048  SSIM: 0.7393
+
+===> Epoch 13 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5206  SSIM: 0.7395
+
+===> Epoch 14 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5020  SSIM: 0.7393
+
+===> Epoch 15 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5220  SSIM: 0.7401
+
+===> Epoch 16 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5119  SSIM: 0.7395
+
+===> Epoch 17 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5204  SSIM: 0.7396
+
+===> Epoch 18 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5113  SSIM: 0.7397
+
+===> Epoch 19 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5146  SSIM: 0.7394
+
+===> Epoch 20 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5111  SSIM: 0.7397
+
+===> Epoch 21 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5215  SSIM: 0.7392
+
+===> Epoch 22 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5175  SSIM: 0.7392
+
+===> Epoch 23 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5074  SSIM: 0.7389
+
+===> Epoch 24 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5237  SSIM: 0.7399
+
+===> Epoch 25 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5197  SSIM: 0.7400
+
+===> Epoch 26 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5100  SSIM: 0.7394
+
+===> Epoch 27 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.4994  SSIM: 0.7403
+
+===> Epoch 28 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5150  SSIM: 0.7394
+
+===> Epoch 29 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.4953  SSIM: 0.7396
+
+===> Epoch 30 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5084  SSIM: 0.7402
+
+===> Epoch 31 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5123  SSIM: 0.7394
+
+===> Epoch 32 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5198  SSIM: 0.7398
+
+===> Epoch 33 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.4986  SSIM: 0.7388
+
+===> Epoch 34 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5103  SSIM: 0.7400
+
+===> Epoch 35 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5080  SSIM: 0.7393
+
+===> Epoch 36 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5034  SSIM: 0.7397
+
+===> Epoch 37 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5044  SSIM: 0.7398
+
+===> Epoch 38 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5139  SSIM: 0.7392
+
+===> Epoch 39 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5008  SSIM: 0.7391
+
+===> Epoch 40 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5106  SSIM: 0.7394
+
+===> Epoch 41 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5206  SSIM: 0.7397
+
+===> Epoch 42 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5188  SSIM: 0.7400
+
+===> Epoch 43 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5160  SSIM: 0.7400
+
+===> Epoch 44 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5242  SSIM: 0.7399
+
+===> Epoch 45 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5160  SSIM: 0.7397
+
+===> Epoch 46 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5142  SSIM: 0.7395
+
+===> Epoch 47 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5164  SSIM: 0.7397
+
+===> Epoch 48 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5259  SSIM: 0.7401
+
+===> Epoch 49 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5138  SSIM: 0.7396
+
+===> Epoch 50 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5252  SSIM: 0.7398
+
+===> Epoch 51 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5248  SSIM: 0.7400
+
+===> Epoch 52 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5105  SSIM: 0.7388
+
+===> Epoch 53 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5252  SSIM: 0.7399
+
+===> Epoch 54 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5022  SSIM: 0.7395
+
+===> Epoch 55 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5229  SSIM: 0.7402
+
+===> Epoch 56 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5182  SSIM: 0.7396
+
+===> Epoch 57 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5008  SSIM: 0.7390
+
+===> Epoch 58 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5128  SSIM: 0.7393
+
+===> Epoch 59 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5019  SSIM: 0.7403
+
+===> Epoch 60 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5116  SSIM: 0.7398
+
+===> Epoch 61 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5140  SSIM: 0.7395
+
+===> Epoch 62 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5189  SSIM: 0.7402
+
+===> Epoch 63 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5200  SSIM: 0.7396
+
+===> Epoch 64 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5111  SSIM: 0.7399
+
+===> Epoch 65 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5138  SSIM: 0.7393
+
+===> Epoch 66 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5080  SSIM: 0.7397
+
+===> Epoch 67 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5245  SSIM: 0.7400
+
+===> Epoch 68 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5136  SSIM: 0.7390
+
+===> Epoch 69 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5099  SSIM: 0.7390
+
+===> Epoch 70 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5161  SSIM: 0.7403
+
+===> Epoch 71 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5017  SSIM: 0.7394
+
+===> Epoch 72 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5050  SSIM: 0.7395
+
+===> Epoch 73 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5075  SSIM: 0.7389
+
+===> Epoch 74 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5090  SSIM: 0.7392
+
+===> Epoch 75 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5140  SSIM: 0.7391
+
+===> Epoch 76 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5163  SSIM: 0.7393
+
+===> Epoch 77 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5100  SSIM: 0.7402
+
+===> Epoch 78 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5055  SSIM: 0.7401
+
+===> Epoch 79 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5132  SSIM: 0.7398
+
+===> Epoch 80 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5203  SSIM: 0.7397
+
+===> Epoch 81 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5056  SSIM: 0.7398
+
+===> Epoch 82 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5096  SSIM: 0.7390
+
+===> Epoch 83 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5164  SSIM: 0.7394
+
+===> Epoch 84 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5204  SSIM: 0.7399
+
+===> Epoch 85 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5236  SSIM: 0.7401
+
+===> Epoch 86 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5133  SSIM: 0.7397
+
+===> Epoch 87 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5130  SSIM: 0.7395
+
+===> Epoch 88 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5153  SSIM: 0.7400
+
+===> Epoch 89 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5219  SSIM: 0.7402
+
+===> Epoch 90 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5167  SSIM: 0.7398
+
+===> Epoch 91 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5270  SSIM: 0.7402
+
+===> Epoch 92 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5177  SSIM: 0.7400
+
+===> Epoch 93 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5180  SSIM: 0.7394
+
+===> Epoch 94 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5198  SSIM: 0.7400
+
+===> Epoch 95 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5102  SSIM: 0.7392
+
+===> Epoch 96 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5135  SSIM: 0.7399
+
+===> Epoch 97 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5178  SSIM: 0.7389
+
+===> Epoch 98 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5179  SSIM: 0.7396
+
+===> Epoch 99 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5252  SSIM: 0.7401
+
+===> Epoch 100 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5107  SSIM: 0.7395
+
+===> Epoch 101 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5245  SSIM: 0.7400
+
+===> Epoch 102 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5033  SSIM: 0.7388
+
+===> Epoch 103 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5180  SSIM: 0.7396
+
+===> Epoch 104 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5181  SSIM: 0.7395
+
+===> Epoch 105 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5125  SSIM: 0.7398
+
+===> Epoch 106 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5085  SSIM: 0.7392
+
+===> Epoch 107 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.4856  SSIM: 0.7396
+
+===> Epoch 108 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5212  SSIM: 0.7402
+
+===> Epoch 109 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5177  SSIM: 0.7396
+
+===> Epoch 110 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5022  SSIM: 0.7400
+
+===> Epoch 111 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.4994  SSIM: 0.7389
+
+===> Epoch 112 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5128  SSIM: 0.7399
+
+===> Epoch 113 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5201  SSIM: 0.7400
+
+===> Epoch 114 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5185  SSIM: 0.7400
+
+===> Epoch 115 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5232  SSIM: 0.7403
+
+===> Epoch 116 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5188  SSIM: 0.7397
+
+===> Epoch 117 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5102  SSIM: 0.7397
+
+===> Epoch 118 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5066  SSIM: 0.7392
+
+===> Epoch 119 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5048  SSIM: 0.7392
+
+===> Epoch 120 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5113  SSIM: 0.7395
+
+===> Epoch 121 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.4980  SSIM: 0.7395
+
+===> Epoch 122 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5137  SSIM: 0.7396
+
+===> Epoch 123 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5112  SSIM: 0.7389
+
+===> Epoch 124 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5180  SSIM: 0.7396
+
+===> Epoch 125 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5166  SSIM: 0.7397
+
+===> Epoch 126 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5295  SSIM: 0.7400
+
+===> Epoch 127 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5263  SSIM: 0.7400
+
+===> Epoch 128 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5144  SSIM: 0.7393
+
+===> Epoch 129 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5100  SSIM: 0.7390
+
+===> Epoch 130 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5076  SSIM: 0.7395
+
+===> Epoch 131 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5182  SSIM: 0.7400
+
+===> Epoch 132 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5184  SSIM: 0.7396
+
+===> Epoch 133 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5180  SSIM: 0.7398
+
+===> Epoch 134 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5191  SSIM: 0.7398
+
+===> Epoch 135 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5217  SSIM: 0.7398
+
+===> Epoch 136 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5132  SSIM: 0.7396
+
+===> Epoch 137 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5113  SSIM: 0.7392
+
+===> Epoch 138 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5065  SSIM: 0.7395
+
+===> Epoch 139 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5116  SSIM: 0.7396
+
+===> Epoch 140 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5184  SSIM: 0.7402
+
+===> Epoch 141 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5104  SSIM: 0.7397
+
+===> Epoch 142 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5184  SSIM: 0.7397
+
+===> Epoch 143 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5180  SSIM: 0.7396
+
+===> Epoch 144 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.4967  SSIM: 0.7395
+
+===> Epoch 145 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5238  SSIM: 0.7402
+
+===> Epoch 146 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5113  SSIM: 0.7399
+
+===> Epoch 147 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5043  SSIM: 0.7397
+
+===> Epoch 148 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5097  SSIM: 0.7392
+
+===> Epoch 149 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5057  SSIM: 0.7396
+
+===> Epoch 150 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5118  SSIM: 0.7391
+
+===> Epoch 151 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5099  SSIM: 0.7396
+
+===> Epoch 152 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5174  SSIM: 0.7401
+
+===> Epoch 153 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5110  SSIM: 0.7395
+
+===> Epoch 154 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5196  SSIM: 0.7402
+
+===> Epoch 155 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5165  SSIM: 0.7389
+
+===> Epoch 156 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.4999  SSIM: 0.7393
+
+===> Epoch 157 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5101  SSIM: 0.7408
+
+===> Epoch 158 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5214  SSIM: 0.7403
+
+===> Epoch 159 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5200  SSIM: 0.7399
+
+===> Epoch 160 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5149  SSIM: 0.7398
+
+===> Epoch 161 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5140  SSIM: 0.7400
+
+===> Epoch 162 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5030  SSIM: 0.7392
+
+===> Epoch 163 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5269  SSIM: 0.7399
+
+===> Epoch 164 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5234  SSIM: 0.7402
+
+===> Epoch 165 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5201  SSIM: 0.7399
+
+===> Epoch 166 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5190  SSIM: 0.7400
+
+===> Epoch 167 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5160  SSIM: 0.7392
+
+===> Epoch 168 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5074  SSIM: 0.7396
+
+===> Epoch 169 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5101  SSIM: 0.7397
+
+===> Epoch 170 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5146  SSIM: 0.7399
+
+===> Epoch 171 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5079  SSIM: 0.7390
+
+===> Epoch 172 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5220  SSIM: 0.7402
+
+===> Epoch 173 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5144  SSIM: 0.7391
+
+===> Epoch 174 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5099  SSIM: 0.7395
+
+===> Epoch 175 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5195  SSIM: 0.7400
+
+===> Epoch 176 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5192  SSIM: 0.7399
+
+===> Epoch 177 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5093  SSIM: 0.7390
+
+===> Epoch 178 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5171  SSIM: 0.7398
+
+===> Epoch 179 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5239  SSIM: 0.7400
+
+===> Epoch 180 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5161  SSIM: 0.7395
+
+===> Epoch 181 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5122  SSIM: 0.7394
+
+===> Epoch 182 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5261  SSIM: 0.7401
+
+===> Epoch 183 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5020  SSIM: 0.7388
+
+===> Epoch 184 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5092  SSIM: 0.7393
+
+===> Epoch 185 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5049  SSIM: 0.7397
+
+===> Epoch 186 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5166  SSIM: 0.7397
+
+===> Epoch 187 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5169  SSIM: 0.7395
+
+===> Epoch 188 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5198  SSIM: 0.7397
+
+===> Epoch 189 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5178  SSIM: 0.7400
+
+===> Epoch 190 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5135  SSIM: 0.7396
+
+===> Epoch 191 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5144  SSIM: 0.7394
+
+===> Epoch 192 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5199  SSIM: 0.7399
+
+===> Epoch 193 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5232  SSIM: 0.7396
+
+===> Epoch 194 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5161  SSIM: 0.7396
+
+===> Epoch 195 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5200  SSIM: 0.7399
+
+===> Epoch 196 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5108  SSIM: 0.7393
+
+===> Epoch 197 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5207  SSIM: 0.7400
+
+===> Epoch 198 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5023  SSIM: 0.7392
+
+===> Epoch 199 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5072  SSIM: 0.7390
+
+===> Epoch 200 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5019  SSIM: 0.7397
+
+===> Epoch 201 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5157  SSIM: 0.7400
+
+===> Epoch 202 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5155  SSIM: 0.7397
+
+===> Epoch 203 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5278  SSIM: 0.7402
+
+===> Epoch 204 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5065  SSIM: 0.7394
+
+===> Epoch 205 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5144  SSIM: 0.7398
+
+===> Epoch 206 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5238  SSIM: 0.7398
+
+===> Epoch 207 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5071  SSIM: 0.7393
+
+===> Epoch 208 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5080  SSIM: 0.7394
+
+===> Epoch 209 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5206  SSIM: 0.7400
+
+===> Epoch 210 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5213  SSIM: 0.7398
+
+===> Epoch 211 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5160  SSIM: 0.7399
+
+===> Epoch 212 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5251  SSIM: 0.7399
+
+===> Epoch 213 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5236  SSIM: 0.7402
+
+===> Epoch 214 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5184  SSIM: 0.7400
+
+===> Epoch 215 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5161  SSIM: 0.7398
+
+===> Epoch 216 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5049  SSIM: 0.7402
+
+===> Epoch 217 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5114  SSIM: 0.7394
+
+===> Epoch 218 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5066  SSIM: 0.7397
+
+===> Epoch 219 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5253  SSIM: 0.7399
+
+===> Epoch 220 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5219  SSIM: 0.7401
+
+===> Epoch 221 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5092  SSIM: 0.7392
+
+===> Epoch 222 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5135  SSIM: 0.7390
+
+===> Epoch 223 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5058  SSIM: 0.7397
+
+===> Epoch 224 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5159  SSIM: 0.7400
+
+===> Epoch 225 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5305  SSIM: 0.7399
+
+===> Epoch 226 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5203  SSIM: 0.7398
+
+===> Epoch 227 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5060  SSIM: 0.7390
+
+===> Epoch 228 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5138  SSIM: 0.7394
+
+===> Epoch 229 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5178  SSIM: 0.7397
+
+===> Epoch 230 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5171  SSIM: 0.7398
+
+===> Epoch 231 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5041  SSIM: 0.7391
+
+===> Epoch 232 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5087  SSIM: 0.7396
+
+===> Epoch 233 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5044  SSIM: 0.7392
+
+===> Epoch 234 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5053  SSIM: 0.7396
+
+===> Epoch 235 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5228  SSIM: 0.7397
+
+===> Epoch 236 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5064  SSIM: 0.7391
+
+===> Epoch 237 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5032  SSIM: 0.7392
+
+===> Epoch 238 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5052  SSIM: 0.7396
+
+===> Epoch 239 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5186  SSIM: 0.7399
+
+===> Epoch 240 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5160  SSIM: 0.7397
+
+===> Epoch 241 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5151  SSIM: 0.7397
+
+===> Epoch 242 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5046  SSIM: 0.7391
+
+===> Epoch 243 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5205  SSIM: 0.7400
+
+===> Epoch 244 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5150  SSIM: 0.7396
+
+===> Epoch 245 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5267  SSIM: 0.7402
+
+===> Epoch 246 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5146  SSIM: 0.7399
+
+===> Epoch 247 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5162  SSIM: 0.7394
+
+===> Epoch 248 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5291  SSIM: 0.7404
+
+===> Epoch 249 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5101  SSIM: 0.7396
+
+===> Epoch 250 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5159  SSIM: 0.7400
+
+===> Epoch 251 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5252  SSIM: 0.7400
+
+===> Epoch 252 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5167  SSIM: 0.7401
+
+===> Epoch 253 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5161  SSIM: 0.7401
+
+===> Epoch 254 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5033  SSIM: 0.7389
+
+===> Epoch 255 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5178  SSIM: 0.7395
+
+===> Epoch 256 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5094  SSIM: 0.7392
+
+===> Epoch 257 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5063  SSIM: 0.7390
+
+===> Epoch 258 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5173  SSIM: 0.7396
+
+===> Epoch 259 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5071  SSIM: 0.7390
+
+===> Epoch 260 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5126  SSIM: 0.7399
+
+===> Epoch 261 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5091  SSIM: 0.7393
+
+===> Epoch 262 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5156  SSIM: 0.7397
+
+===> Epoch 263 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5192  SSIM: 0.7395
+
+===> Epoch 264 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5104  SSIM: 0.7392
+
+===> Epoch 265 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5160  SSIM: 0.7396
+
+===> Epoch 266 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5189  SSIM: 0.7395
+
+===> Epoch 267 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5234  SSIM: 0.7397
+
+===> Epoch 268 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5295  SSIM: 0.7403
+
+===> Epoch 269 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5210  SSIM: 0.7396
+
+===> Epoch 270 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5256  SSIM: 0.7401
+
+===> Epoch 271 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5148  SSIM: 0.7401
+
+===> Epoch 272 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5137  SSIM: 0.7397
+
+===> Epoch 273 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5090  SSIM: 0.7392
+
+===> Epoch 274 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5171  SSIM: 0.7403
+
+===> Epoch 275 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5161  SSIM: 0.7398
+
+===> Epoch 276 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5141  SSIM: 0.7399
+
+===> Epoch 277 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5234  SSIM: 0.7397
+
+===> Epoch 278 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5192  SSIM: 0.7395
+
+===> Epoch 279 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5295  SSIM: 0.7403
+
+===> Epoch 280 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5162  SSIM: 0.7400
+
+===> Epoch 281 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5244  SSIM: 0.7395
+
+===> Epoch 282 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5137  SSIM: 0.7392
+
+===> Epoch 283 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5198  SSIM: 0.7399
+
+===> Epoch 284 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5085  SSIM: 0.7393
+
+===> Epoch 285 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5203  SSIM: 0.7395
+
+===> Epoch 286 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5167  SSIM: 0.7395
+
+===> Epoch 287 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5146  SSIM: 0.7391
+
+===> Epoch 288 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5160  SSIM: 0.7400
+
+===> Epoch 289 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5079  SSIM: 0.7398
+
+===> Epoch 290 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5064  SSIM: 0.7390
+
+===> Epoch 291 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5057  SSIM: 0.7395
+
+===> Epoch 292 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.4949  SSIM: 0.7388
+
+===> Epoch 293 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5056  SSIM: 0.7391
+
+===> Epoch 294 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5042  SSIM: 0.7392
+
+===> Epoch 295 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5044  SSIM: 0.7391
+
+===> Epoch 296 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5165  SSIM: 0.7397
+
+===> Epoch 297 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5179  SSIM: 0.7395
+
+===> Epoch 298 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5260  SSIM: 0.7398
+
+===> Epoch 299 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5143  SSIM: 0.7390
+
+===> Epoch 300 starts:
+Training: Average Loss: 0.0024
+Testing:  Average PSNR: 26.5254  SSIM: 0.7403
