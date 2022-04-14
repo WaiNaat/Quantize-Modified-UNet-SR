@@ -11,6 +11,8 @@ from VDSR.model import Net
 from progress_bar import progress_bar
 
 import pytorch_ssim
+import os
+from torchvision.transforms.functional import to_pil_image
 
 class biTrainer(object):
     def __init__(self, config, training_loader, testing_loader):
@@ -86,6 +88,13 @@ class biTrainer(object):
                 #print(ssim_value)
                 avg_ssim += ssim_value
                 progress_bar(batch_num, len(self.testing_loader), 'PSNR: %.4f | SSIM: %.4f' % ((avg_psnr / (batch_num + 1)),avg_ssim / (batch_num + 1)))
+
+                # change output to image
+                output = prediction.squeeze()
+                output = to_pil_image(output).convert('RGB')
+
+                # save output
+                output.save(os.path.join("bicubic", "prediction", f"prediction_{batch_num}.jpg"))
 
         print("    Average PSNR: {:.4f} dB".format(avg_psnr / len(self.testing_loader)))
 

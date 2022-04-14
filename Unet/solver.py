@@ -44,6 +44,8 @@ class unetTrainer(object):
         self.testing_loader = testing_loader
 
         self.save_path = os.path.join("result")
+        self.trained_model_path = "result_BSD300_mixGE/my_model.pth"
+
         self.logger = self.set_logger()
 
     def set_logger(self):
@@ -83,6 +85,11 @@ class unetTrainer(object):
         torch.manual_seed(self.seed)
 
         self.logger.info('# model parameters:', sum(param.numel() for param in self.model.parameters()))
+
+        # quantize model
+        self.model.load_state_dict(torch.load(self.trained_model_path))
+        self.model = self.quantize_model(self.model)
+        self.model.to(self.device)
 
         if self.CUDA:
             torch.cuda.manual_seed(self.seed)
@@ -253,17 +260,11 @@ class unetTrainer(object):
         self.logger.info(f"\nTesting Teacher Model:  Average PSNR: {avg_psnr:.4f}  SSIM: {avg_ssim:.4f}\n")
 
     def run(self):
-        # load model and 
+        # load model
         self.build_model()
 
-        trained_model_path = "result_BSD300_mixGE/my_model.pth"
-
-        self.model_teacher.load_state_dict(torch.load(trained_model_path))
+        self.model_teacher.load_state_dict(torch.load(self.trained_model_path))
         self.model_teacher.to(self.device)
-
-        self.model.load_state_dict(torch.load(trained_model_path))
-        self.model = self.quantize_model(self.model)
-        self.model.to(self.device)
 
         self.logger.info(self.model)
 
