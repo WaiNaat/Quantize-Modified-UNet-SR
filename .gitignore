@@ -1,0 +1,14 @@
+*.pyc
+*.jpg
+*.png
+
+result_kd_4bit_*
+result_kd_8bit_*
+result_kd_mse_*
+result_quant_4bit_*
+result_quant_8bit_*
+result_df_4bit_*
+result_df_prog_*
+result_df_24-16-8-4_*
+
+solver copy.py

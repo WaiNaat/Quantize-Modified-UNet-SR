@@ -33,6 +33,7 @@ parser.add_argument('--upscale_factor', '-uf',  type=int, default=2, help="super
 parser.add_argument('--model', '-m', type=str, default='srgan', help='choose which model is going to use')
 
 parser.add_argument('--test_only', '-to', type=int, default=0, help="load pre-trained data and do testing")
+parser.add_argument('--progressive', '-p', type=int, default=0, help="progressive knowledge distillation")
 
 args = parser.parse_args()
 
@@ -70,7 +71,14 @@ def main():
     else:
         raise Exception("the model does not exist")
 
-    model.run() if args.test_only == 0 else model.testOnly()
+    if args.test_only == 1:
+        model.testOnly()
+
+    elif args.progressive == 1:
+        model.run_progressive()
+        
+    else:
+        model.run()
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,1760 @@
+UNet2(
+  (inc): inconv(
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (down1): down(
+    (mpconv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): one_conv(
+        (conv): Sequential(
+          (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+          (1): Sequential(
+            (0): ReLU(inplace=True)
+            (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+          )
+        )
+      )
+    )
+  )
+  (down2): down(
+    (mpconv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): one_conv(
+        (conv): Sequential(
+          (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+          (1): Sequential(
+            (0): ReLU(inplace=True)
+            (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+          )
+        )
+      )
+    )
+  )
+  (down3): down(
+    (mpconv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): one_conv(
+        (conv): Sequential(
+          (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+          (1): Sequential(
+            (0): ReLU(inplace=True)
+            (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+          )
+        )
+      )
+    )
+  )
+  (down4): down(
+    (mpconv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): one_conv(
+        (conv): Sequential(
+          (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+          (1): Sequential(
+            (0): ReLU(inplace=True)
+            (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+          )
+        )
+      )
+    )
+  )
+  (up1): up(
+    (up): (Quant_ConvTranspose2d() weight_bit=24, full_precision_flag=False)
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (up2): up(
+    (up): (Quant_ConvTranspose2d() weight_bit=24, full_precision_flag=False)
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (up3): up(
+    (up): (Quant_ConvTranspose2d() weight_bit=24, full_precision_flag=False)
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (up4): up(
+    (up): (Quant_ConvTranspose2d() weight_bit=24, full_precision_flag=False)
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (up5): up(
+    (up): (Quant_ConvTranspose2d() weight_bit=24, full_precision_flag=False)
+    (conv): one_conv(
+      (conv): Sequential(
+        (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+        (1): Sequential(
+          (0): ReLU(inplace=True)
+          (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+        )
+      )
+    )
+  )
+  (outc): outconv(
+    (conv): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+  )
+  (up_s1): up_s(
+    (upconv): Sequential(
+      (0): (Quant_ConvTranspose2d() weight_bit=24, full_precision_flag=False)
+      (1): one_conv(
+        (conv): Sequential(
+          (0): (Quant_Conv2d() weight_bit=24, full_precision_flag=False)
+          (1): Sequential(
+            (0): ReLU(inplace=True)
+            (1): QuantAct(activation_bit=24, full_precision_flag=False, running_stat=True, Act_min: 0.00, Act_max: 0.00)
+          )
+        )
+      )
+    )
+  )
+)
+
+Testing Teacher Model:  Average PSNR: 30.0925  SSIM: 0.8822
+
+
+24-bit quantization.
+
+===> Epoch 1 starts:
+Training: Average Generator Loss: 1666.2412
+Testing:  Average PSNR: 28.8359  SSIM: 0.8725
+
+===> Epoch 2 starts:
+Training: Average Generator Loss: 1675.0236
+Testing:  Average PSNR: 29.5885  SSIM: 0.8792
+
+===> Epoch 3 starts:
+Training: Average Generator Loss: 1633.0820
+Testing:  Average PSNR: 29.8231  SSIM: 0.8805
+
+===> Epoch 4 starts:
+Training: Average Generator Loss: 1614.3369
+Testing:  Average PSNR: 29.9342  SSIM: 0.8805
+
+===> Epoch 5 starts:
+Training: Average Generator Loss: 1600.5002
+Testing:  Average PSNR: 29.5189  SSIM: 0.8791
+
+===> Epoch 6 starts:
+Training: Average Generator Loss: 1549.2075
+Testing:  Average PSNR: 29.8752  SSIM: 0.8817
+
+===> Epoch 7 starts:
+Training: Average Generator Loss: 1543.1479
+Testing:  Average PSNR: 29.8556  SSIM: 0.8805
+
+===> Epoch 8 starts:
+Training: Average Generator Loss: 1514.0087
+Testing:  Average PSNR: 29.7970  SSIM: 0.8796
+
+===> Epoch 9 starts:
+Training: Average Generator Loss: 1494.0330
+Testing:  Average PSNR: 29.8565  SSIM: 0.8800
+
+===> Epoch 10 starts:
+Training: Average Generator Loss: 1477.8721
+Testing:  Average PSNR: 29.7361  SSIM: 0.8802
+
+===> Epoch 11 starts:
+Training: Average Generator Loss: 1482.7227
+Testing:  Average PSNR: 29.9478  SSIM: 0.8808
+
+===> Epoch 12 starts:
+Training: Average Generator Loss: 1463.7721
+Testing:  Average PSNR: 29.9833  SSIM: 0.8811
+
+===> Epoch 13 starts:
+Training: Average Generator Loss: 1478.6073
+Testing:  Average PSNR: 29.9837  SSIM: 0.8809
+
+===> Epoch 14 starts:
+Training: Average Generator Loss: 1473.7388
+Testing:  Average PSNR: 29.9840  SSIM: 0.8809
+
+===> Epoch 15 starts:
+Training: Average Generator Loss: 1449.5605
+Testing:  Average PSNR: 29.9846  SSIM: 0.8809
+
+===> Epoch 16 starts:
+Training: Average Generator Loss: 1460.0924
+Testing:  Average PSNR: 29.9837  SSIM: 0.8809
+
+===> Epoch 17 starts:
+Training: Average Generator Loss: 1447.1323
+Testing:  Average PSNR: 29.9840  SSIM: 0.8810
+
+===> Epoch 18 starts:
+Training: Average Generator Loss: 1464.8831
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 19 starts:
+Training: Average Generator Loss: 1451.0237
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 20 starts:
+Training: Average Generator Loss: 1464.1643
+Testing:  Average PSNR: 29.9848  SSIM: 0.8810
+
+===> Epoch 21 starts:
+Training: Average Generator Loss: 1459.1979
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 22 starts:
+Training: Average Generator Loss: 1466.9124
+Testing:  Average PSNR: 29.9853  SSIM: 0.8810
+
+===> Epoch 23 starts:
+Training: Average Generator Loss: 1453.3142
+Testing:  Average PSNR: 29.9853  SSIM: 0.8810
+
+===> Epoch 24 starts:
+Training: Average Generator Loss: 1435.5836
+Testing:  Average PSNR: 29.9847  SSIM: 0.8810
+
+===> Epoch 25 starts:
+Training: Average Generator Loss: 1448.7906
+Testing:  Average PSNR: 29.9856  SSIM: 0.8810
+
+===> Epoch 26 starts:
+Training: Average Generator Loss: 1452.3759
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 27 starts:
+Training: Average Generator Loss: 1443.4711
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 28 starts:
+Training: Average Generator Loss: 1456.1892
+Testing:  Average PSNR: 29.9846  SSIM: 0.8810
+
+===> Epoch 29 starts:
+Training: Average Generator Loss: 1469.3345
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 30 starts:
+Training: Average Generator Loss: 1447.8904
+Testing:  Average PSNR: 29.9846  SSIM: 0.8810
+
+===> Epoch 31 starts:
+Training: Average Generator Loss: 1445.3849
+Testing:  Average PSNR: 29.9842  SSIM: 0.8810
+
+===> Epoch 32 starts:
+Training: Average Generator Loss: 1460.5850
+Testing:  Average PSNR: 29.9848  SSIM: 0.8810
+
+===> Epoch 33 starts:
+Training: Average Generator Loss: 1457.6597
+Testing:  Average PSNR: 29.9851  SSIM: 0.8810
+
+===> Epoch 34 starts:
+Training: Average Generator Loss: 1453.9032
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 35 starts:
+Training: Average Generator Loss: 1461.7209
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 36 starts:
+Training: Average Generator Loss: 1455.4326
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 37 starts:
+Training: Average Generator Loss: 1450.3157
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 38 starts:
+Training: Average Generator Loss: 1442.1746
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 39 starts:
+Training: Average Generator Loss: 1454.0991
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 40 starts:
+Training: Average Generator Loss: 1452.7158
+Testing:  Average PSNR: 29.9848  SSIM: 0.8810
+
+===> Epoch 41 starts:
+Training: Average Generator Loss: 1441.9961
+Testing:  Average PSNR: 29.9851  SSIM: 0.8810
+
+===> Epoch 42 starts:
+Training: Average Generator Loss: 1459.5693
+Testing:  Average PSNR: 29.9853  SSIM: 0.8810
+
+===> Epoch 43 starts:
+Training: Average Generator Loss: 1428.3840
+Testing:  Average PSNR: 29.9851  SSIM: 0.8810
+
+===> Epoch 44 starts:
+Training: Average Generator Loss: 1456.0562
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 45 starts:
+Training: Average Generator Loss: 1451.7537
+Testing:  Average PSNR: 29.9848  SSIM: 0.8810
+
+===> Epoch 46 starts:
+Training: Average Generator Loss: 1447.8843
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 47 starts:
+Training: Average Generator Loss: 1443.6704
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 48 starts:
+Training: Average Generator Loss: 1451.2402
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 49 starts:
+Training: Average Generator Loss: 1449.5382
+Testing:  Average PSNR: 29.9851  SSIM: 0.8810
+
+===> Epoch 50 starts:
+Training: Average Generator Loss: 1456.1432
+Testing:  Average PSNR: 29.9847  SSIM: 0.8810
+
+===> Epoch 51 starts:
+Training: Average Generator Loss: 1447.1989
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 52 starts:
+Training: Average Generator Loss: 1467.7791
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 53 starts:
+Training: Average Generator Loss: 1455.2576
+Testing:  Average PSNR: 29.9851  SSIM: 0.8810
+
+===> Epoch 54 starts:
+Training: Average Generator Loss: 1446.2239
+Testing:  Average PSNR: 29.9854  SSIM: 0.8810
+
+===> Epoch 55 starts:
+Training: Average Generator Loss: 1450.7041
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 56 starts:
+Training: Average Generator Loss: 1449.4299
+Testing:  Average PSNR: 29.9851  SSIM: 0.8810
+
+===> Epoch 57 starts:
+Training: Average Generator Loss: 1453.1377
+Testing:  Average PSNR: 29.9843  SSIM: 0.8810
+
+===> Epoch 58 starts:
+Training: Average Generator Loss: 1458.1479
+Testing:  Average PSNR: 29.9847  SSIM: 0.8810
+
+===> Epoch 59 starts:
+Training: Average Generator Loss: 1447.7158
+Testing:  Average PSNR: 29.9848  SSIM: 0.8810
+
+===> Epoch 60 starts:
+Training: Average Generator Loss: 1443.6779
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 61 starts:
+Training: Average Generator Loss: 1447.4427
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 62 starts:
+Training: Average Generator Loss: 1456.3647
+Testing:  Average PSNR: 29.9853  SSIM: 0.8810
+
+===> Epoch 63 starts:
+Training: Average Generator Loss: 1435.0283
+Testing:  Average PSNR: 29.9847  SSIM: 0.8810
+
+===> Epoch 64 starts:
+Training: Average Generator Loss: 1440.2710
+Testing:  Average PSNR: 29.9855  SSIM: 0.8810
+
+===> Epoch 65 starts:
+Training: Average Generator Loss: 1434.1956
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 66 starts:
+Training: Average Generator Loss: 1456.3208
+Testing:  Average PSNR: 29.9854  SSIM: 0.8810
+
+===> Epoch 67 starts:
+Training: Average Generator Loss: 1447.0188
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 68 starts:
+Training: Average Generator Loss: 1450.2455
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 69 starts:
+Training: Average Generator Loss: 1434.0134
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 70 starts:
+Training: Average Generator Loss: 1462.3994
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 71 starts:
+Training: Average Generator Loss: 1434.2236
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 72 starts:
+Training: Average Generator Loss: 1464.1511
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 73 starts:
+Training: Average Generator Loss: 1445.9952
+Testing:  Average PSNR: 29.9853  SSIM: 0.8810
+
+===> Epoch 74 starts:
+Training: Average Generator Loss: 1452.5093
+Testing:  Average PSNR: 29.9851  SSIM: 0.8810
+
+===> Epoch 75 starts:
+Training: Average Generator Loss: 1449.7983
+Testing:  Average PSNR: 29.9846  SSIM: 0.8810
+
+===> Epoch 76 starts:
+Training: Average Generator Loss: 1463.2686
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 77 starts:
+Training: Average Generator Loss: 1436.2207
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 78 starts:
+Training: Average Generator Loss: 1456.0801
+Testing:  Average PSNR: 29.9846  SSIM: 0.8810
+
+===> Epoch 79 starts:
+Training: Average Generator Loss: 1447.1112
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 80 starts:
+Training: Average Generator Loss: 1446.2787
+Testing:  Average PSNR: 29.9847  SSIM: 0.8810
+
+===> Epoch 81 starts:
+Training: Average Generator Loss: 1448.1934
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 82 starts:
+Training: Average Generator Loss: 1453.1119
+Testing:  Average PSNR: 29.9847  SSIM: 0.8810
+
+===> Epoch 83 starts:
+Training: Average Generator Loss: 1450.8613
+Testing:  Average PSNR: 29.9851  SSIM: 0.8810
+
+===> Epoch 84 starts:
+Training: Average Generator Loss: 1452.6810
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 85 starts:
+Training: Average Generator Loss: 1455.1237
+Testing:  Average PSNR: 29.9846  SSIM: 0.8810
+
+===> Epoch 86 starts:
+Training: Average Generator Loss: 1445.8101
+Testing:  Average PSNR: 29.9846  SSIM: 0.8810
+
+===> Epoch 87 starts:
+Training: Average Generator Loss: 1449.2642
+Testing:  Average PSNR: 29.9847  SSIM: 0.8810
+
+===> Epoch 88 starts:
+Training: Average Generator Loss: 1462.2695
+Testing:  Average PSNR: 29.9845  SSIM: 0.8810
+
+===> Epoch 89 starts:
+Training: Average Generator Loss: 1445.2195
+Testing:  Average PSNR: 29.9846  SSIM: 0.8810
+
+===> Epoch 90 starts:
+Training: Average Generator Loss: 1444.4233
+Testing:  Average PSNR: 29.9849  SSIM: 0.8810
+
+===> Epoch 91 starts:
+Training: Average Generator Loss: 1434.0986
+Testing:  Average PSNR: 29.9854  SSIM: 0.8810
+
+===> Epoch 92 starts:
+Training: Average Generator Loss: 1452.4358
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 93 starts:
+Training: Average Generator Loss: 1454.5143
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 94 starts:
+Training: Average Generator Loss: 1448.5825
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 95 starts:
+Training: Average Generator Loss: 1439.4457
+Testing:  Average PSNR: 29.9850  SSIM: 0.8810
+
+===> Epoch 96 starts:
+Training: Average Generator Loss: 1446.1719
+Testing:  Average PSNR: 29.9854  SSIM: 0.8810
+
+===> Epoch 97 starts:
+Training: Average Generator Loss: 1468.4346
+Testing:  Average PSNR: 29.9851  SSIM: 0.8810
+
+===> Epoch 98 starts:
+Training: Average Generator Loss: 1463.3446
+Testing:  Average PSNR: 29.9852  SSIM: 0.8810
+
+===> Epoch 99 starts:
+Training: Average Generator Loss: 1460.4453
+Testing:  Average PSNR: 29.9843  SSIM: 0.8810
+
+===> Epoch 100 starts:
+Training: Average Generator Loss: 1446.2891
+Testing:  Average PSNR: 29.9851  SSIM: 0.8810
+
+Testing Teacher Model:  Average PSNR: 29.9501  SSIM: 0.8807
+
+
+===> (16-bit) Epoch 1 starts:
+Training: Average Generator Loss: 1434.4727
+Testing:  Average PSNR: 29.2694  SSIM: 0.8578
+
+===> (16-bit) Epoch 2 starts:
+Training: Average Generator Loss: 1435.8162
+Testing:  Average PSNR: 29.8933  SSIM: 0.8795
+
+===> (16-bit) Epoch 3 starts:
+Training: Average Generator Loss: 1456.3284
+Testing:  Average PSNR: 29.4839  SSIM: 0.8794
+
+===> (16-bit) Epoch 4 starts:
+Training: Average Generator Loss: 1436.4951
+Testing:  Average PSNR: 29.9117  SSIM: 0.8799
+
+===> (16-bit) Epoch 5 starts:
+Training: Average Generator Loss: 1446.5962
+Testing:  Average PSNR: 29.8513  SSIM: 0.8800
+
+===> (16-bit) Epoch 6 starts:
+Training: Average Generator Loss: 1456.9565
+Testing:  Average PSNR: 29.8356  SSIM: 0.8788
+
+===> (16-bit) Epoch 7 starts:
+Training: Average Generator Loss: 1446.7988
+Testing:  Average PSNR: 29.8659  SSIM: 0.8803
+
+===> (16-bit) Epoch 8 starts:
+Training: Average Generator Loss: 1449.2177
+Testing:  Average PSNR: 29.9522  SSIM: 0.8812
+
+===> (16-bit) Epoch 9 starts:
+Training: Average Generator Loss: 1438.9431
+Testing:  Average PSNR: 29.9196  SSIM: 0.8804
+
+===> (16-bit) Epoch 10 starts:
+Training: Average Generator Loss: 1438.3065
+Testing:  Average PSNR: 29.8692  SSIM: 0.8792
+
+===> (16-bit) Epoch 11 starts:
+Training: Average Generator Loss: 1435.8833
+Testing:  Average PSNR: 29.7349  SSIM: 0.8803
+
+===> (16-bit) Epoch 12 starts:
+Training: Average Generator Loss: 1451.1421
+Testing:  Average PSNR: 29.7882  SSIM: 0.8797
+
+===> (16-bit) Epoch 13 starts:
+Training: Average Generator Loss: 1441.4727
+Testing:  Average PSNR: 29.7768  SSIM: 0.8802
+
+===> (16-bit) Epoch 14 starts:
+Training: Average Generator Loss: 1430.8945
+Testing:  Average PSNR: 29.8707  SSIM: 0.8794
+
+===> (16-bit) Epoch 15 starts:
+Training: Average Generator Loss: 1447.3008
+Testing:  Average PSNR: 29.8738  SSIM: 0.8799
+
+===> (16-bit) Epoch 16 starts:
+Training: Average Generator Loss: 1452.4387
+Testing:  Average PSNR: 29.9037  SSIM: 0.8786
+
+===> (16-bit) Epoch 17 starts:
+Training: Average Generator Loss: 1459.1182
+Testing:  Average PSNR: 29.9301  SSIM: 0.8801
+
+===> (16-bit) Epoch 18 starts:
+Training: Average Generator Loss: 1431.8331
+Testing:  Average PSNR: 29.9259  SSIM: 0.8804
+
+===> (16-bit) Epoch 19 starts:
+Training: Average Generator Loss: 1448.5046
+Testing:  Average PSNR: 29.8870  SSIM: 0.8791
+
+===> (16-bit) Epoch 20 starts:
+Training: Average Generator Loss: 1449.9971
+Testing:  Average PSNR: 29.8635  SSIM: 0.8802
+
+===> (16-bit) Epoch 21 starts:
+Training: Average Generator Loss: 1438.2817
+Testing:  Average PSNR: 29.8679  SSIM: 0.8802
+
+===> (16-bit) Epoch 22 starts:
+Training: Average Generator Loss: 1438.3184
+Testing:  Average PSNR: 29.8236  SSIM: 0.8800
+
+===> (16-bit) Epoch 23 starts:
+Training: Average Generator Loss: 1444.7559
+Testing:  Average PSNR: 29.9266  SSIM: 0.8802
+
+===> (16-bit) Epoch 24 starts:
+Training: Average Generator Loss: 1453.7345
+Testing:  Average PSNR: 29.9295  SSIM: 0.8791
+
+===> (16-bit) Epoch 25 starts:
+Training: Average Generator Loss: 1444.3898
+Testing:  Average PSNR: 29.8626  SSIM: 0.8808
+
+===> (16-bit) Epoch 26 starts:
+Training: Average Generator Loss: 1453.1836
+Testing:  Average PSNR: 29.8713  SSIM: 0.8803
+
+===> (16-bit) Epoch 27 starts:
+Training: Average Generator Loss: 1451.6631
+Testing:  Average PSNR: 29.7641  SSIM: 0.8803
+
+===> (16-bit) Epoch 28 starts:
+Training: Average Generator Loss: 1463.7455
+Testing:  Average PSNR: 29.8930  SSIM: 0.8798
+
+===> (16-bit) Epoch 29 starts:
+Training: Average Generator Loss: 1447.4738
+Testing:  Average PSNR: 29.9114  SSIM: 0.8801
+
+===> (16-bit) Epoch 30 starts:
+Training: Average Generator Loss: 1451.3005
+Testing:  Average PSNR: 29.8699  SSIM: 0.8800
+
+===> (16-bit) Epoch 31 starts:
+Training: Average Generator Loss: 1457.8210
+Testing:  Average PSNR: 29.7439  SSIM: 0.8802
+
+===> (16-bit) Epoch 32 starts:
+Training: Average Generator Loss: 1445.1064
+Testing:  Average PSNR: 29.8372  SSIM: 0.8799
+
+===> (16-bit) Epoch 33 starts:
+Training: Average Generator Loss: 1439.7949
+Testing:  Average PSNR: 29.7220  SSIM: 0.8797
+
+===> (16-bit) Epoch 34 starts:
+Training: Average Generator Loss: 1447.6333
+Testing:  Average PSNR: 29.7622  SSIM: 0.8802
+
+===> (16-bit) Epoch 35 starts:
+Training: Average Generator Loss: 1447.7036
+Testing:  Average PSNR: 29.8587  SSIM: 0.8801
+
+===> (16-bit) Epoch 36 starts:
+Training: Average Generator Loss: 1442.0684
+Testing:  Average PSNR: 29.8544  SSIM: 0.8794
+
+===> (16-bit) Epoch 37 starts:
+Training: Average Generator Loss: 1447.4067
+Testing:  Average PSNR: 29.8587  SSIM: 0.8799
+
+===> (16-bit) Epoch 38 starts:
+Training: Average Generator Loss: 1443.9082
+Testing:  Average PSNR: 29.8019  SSIM: 0.8807
+
+===> (16-bit) Epoch 39 starts:
+Training: Average Generator Loss: 1441.6372
+Testing:  Average PSNR: 29.8453  SSIM: 0.8801
+
+===> (16-bit) Epoch 40 starts:
+Training: Average Generator Loss: 1451.7863
+Testing:  Average PSNR: 29.8360  SSIM: 0.8804
+
+===> (16-bit) Epoch 41 starts:
+Training: Average Generator Loss: 1439.7587
+Testing:  Average PSNR: 29.8599  SSIM: 0.8804
+
+===> (16-bit) Epoch 42 starts:
+Training: Average Generator Loss: 1453.4027
+Testing:  Average PSNR: 29.8380  SSIM: 0.8801
+
+===> (16-bit) Epoch 43 starts:
+Training: Average Generator Loss: 1428.7122
+Testing:  Average PSNR: 29.8484  SSIM: 0.8801
+
+===> (16-bit) Epoch 44 starts:
+Training: Average Generator Loss: 1444.3185
+Testing:  Average PSNR: 29.8785  SSIM: 0.8801
+
+===> (16-bit) Epoch 45 starts:
+Training: Average Generator Loss: 1432.7832
+Testing:  Average PSNR: 29.8216  SSIM: 0.8803
+
+===> (16-bit) Epoch 46 starts:
+Training: Average Generator Loss: 1439.6019
+Testing:  Average PSNR: 29.8676  SSIM: 0.8806
+
+===> (16-bit) Epoch 47 starts:
+Training: Average Generator Loss: 1441.9048
+Testing:  Average PSNR: 29.8940  SSIM: 0.8795
+
+===> (16-bit) Epoch 48 starts:
+Training: Average Generator Loss: 1445.5040
+Testing:  Average PSNR: 29.9350  SSIM: 0.8807
+
+===> (16-bit) Epoch 49 starts:
+Training: Average Generator Loss: 1445.6989
+Testing:  Average PSNR: 29.9431  SSIM: 0.8804
+
+===> (16-bit) Epoch 50 starts:
+Training: Average Generator Loss: 1450.8168
+Testing:  Average PSNR: 29.8787  SSIM: 0.8812
+
+===> (16-bit) Epoch 51 starts:
+Training: Average Generator Loss: 1452.4409
+Testing:  Average PSNR: 29.9325  SSIM: 0.8804
+
+===> (16-bit) Epoch 52 starts:
+Training: Average Generator Loss: 1434.5005
+Testing:  Average PSNR: 29.8390  SSIM: 0.8798
+
+===> (16-bit) Epoch 53 starts:
+Training: Average Generator Loss: 1435.1523
+Testing:  Average PSNR: 29.8474  SSIM: 0.8797
+
+===> (16-bit) Epoch 54 starts:
+Training: Average Generator Loss: 1458.7262
+Testing:  Average PSNR: 29.8580  SSIM: 0.8805
+
+===> (16-bit) Epoch 55 starts:
+Training: Average Generator Loss: 1440.0244
+Testing:  Average PSNR: 29.9006  SSIM: 0.8802
+
+===> (16-bit) Epoch 56 starts:
+Training: Average Generator Loss: 1446.5869
+Testing:  Average PSNR: 29.9090  SSIM: 0.8798
+
+===> (16-bit) Epoch 57 starts:
+Training: Average Generator Loss: 1436.8368
+Testing:  Average PSNR: 29.9157  SSIM: 0.8806
+
+===> (16-bit) Epoch 58 starts:
+Training: Average Generator Loss: 1441.6808
+Testing:  Average PSNR: 29.8720  SSIM: 0.8802
+
+===> (16-bit) Epoch 59 starts:
+Training: Average Generator Loss: 1458.7163
+Testing:  Average PSNR: 29.8544  SSIM: 0.8803
+
+===> (16-bit) Epoch 60 starts:
+Training: Average Generator Loss: 1457.1943
+Testing:  Average PSNR: 29.8353  SSIM: 0.8805
+
+===> (16-bit) Epoch 61 starts:
+Training: Average Generator Loss: 1443.1296
+Testing:  Average PSNR: 29.8242  SSIM: 0.8807
+
+===> (16-bit) Epoch 62 starts:
+Training: Average Generator Loss: 1472.5530
+Testing:  Average PSNR: 29.9118  SSIM: 0.8809
+
+===> (16-bit) Epoch 63 starts:
+Training: Average Generator Loss: 1446.8206
+Testing:  Average PSNR: 29.8596  SSIM: 0.8800
+
+===> (16-bit) Epoch 64 starts:
+Training: Average Generator Loss: 1438.2593
+Testing:  Average PSNR: 29.7888  SSIM: 0.8802
+
+===> (16-bit) Epoch 65 starts:
+Training: Average Generator Loss: 1449.4548
+Testing:  Average PSNR: 29.8829  SSIM: 0.8802
+
+===> (16-bit) Epoch 66 starts:
+Training: Average Generator Loss: 1443.9160
+Testing:  Average PSNR: 29.8571  SSIM: 0.8806
+
+===> (16-bit) Epoch 67 starts:
+Training: Average Generator Loss: 1455.1017
+Testing:  Average PSNR: 29.8273  SSIM: 0.8804
+
+===> (16-bit) Epoch 68 starts:
+Training: Average Generator Loss: 1454.6525
+Testing:  Average PSNR: 29.7951  SSIM: 0.8800
+
+===> (16-bit) Epoch 69 starts:
+Training: Average Generator Loss: 1445.9551
+Testing:  Average PSNR: 29.8823  SSIM: 0.8790
+
+===> (16-bit) Epoch 70 starts:
+Training: Average Generator Loss: 1452.8898
+Testing:  Average PSNR: 29.8456  SSIM: 0.8803
+
+===> (16-bit) Epoch 71 starts:
+Training: Average Generator Loss: 1452.1125
+Testing:  Average PSNR: 29.9090  SSIM: 0.8797
+
+===> (16-bit) Epoch 72 starts:
+Training: Average Generator Loss: 1440.5920
+Testing:  Average PSNR: 29.8714  SSIM: 0.8800
+
+===> (16-bit) Epoch 73 starts:
+Training: Average Generator Loss: 1441.9415
+Testing:  Average PSNR: 29.9022  SSIM: 0.8801
+
+===> (16-bit) Epoch 74 starts:
+Training: Average Generator Loss: 1440.0273
+Testing:  Average PSNR: 29.8238  SSIM: 0.8803
+
+===> (16-bit) Epoch 75 starts:
+Training: Average Generator Loss: 1453.9753
+Testing:  Average PSNR: 29.8309  SSIM: 0.8799
+
+===> (16-bit) Epoch 76 starts:
+Training: Average Generator Loss: 1447.7903
+Testing:  Average PSNR: 29.8634  SSIM: 0.8802
+
+===> (16-bit) Epoch 77 starts:
+Training: Average Generator Loss: 1454.4829
+Testing:  Average PSNR: 29.8518  SSIM: 0.8798
+
+===> (16-bit) Epoch 78 starts:
+Training: Average Generator Loss: 1457.4597
+Testing:  Average PSNR: 29.8400  SSIM: 0.8798
+
+===> (16-bit) Epoch 79 starts:
+Training: Average Generator Loss: 1445.5703
+Testing:  Average PSNR: 29.8620  SSIM: 0.8800
+
+===> (16-bit) Epoch 80 starts:
+Training: Average Generator Loss: 1452.8660
+Testing:  Average PSNR: 29.8444  SSIM: 0.8800
+
+===> (16-bit) Epoch 81 starts:
+Training: Average Generator Loss: 1446.2896
+Testing:  Average PSNR: 29.8679  SSIM: 0.8796
+
+===> (16-bit) Epoch 82 starts:
+Training: Average Generator Loss: 1445.0229
+Testing:  Average PSNR: 29.8282  SSIM: 0.8793
+
+===> (16-bit) Epoch 83 starts:
+Training: Average Generator Loss: 1455.8464
+Testing:  Average PSNR: 29.9300  SSIM: 0.8808
+
+===> (16-bit) Epoch 84 starts:
+Training: Average Generator Loss: 1454.0723
+Testing:  Average PSNR: 29.9312  SSIM: 0.8802
+
+===> (16-bit) Epoch 85 starts:
+Training: Average Generator Loss: 1457.3567
+Testing:  Average PSNR: 29.9470  SSIM: 0.8798
+
+===> (16-bit) Epoch 86 starts:
+Training: Average Generator Loss: 1463.5383
+Testing:  Average PSNR: 29.9340  SSIM: 0.8797
+
+===> (16-bit) Epoch 87 starts:
+Training: Average Generator Loss: 1432.0088
+Testing:  Average PSNR: 29.9277  SSIM: 0.8795
+
+===> (16-bit) Epoch 88 starts:
+Training: Average Generator Loss: 1454.3696
+Testing:  Average PSNR: 29.8763  SSIM: 0.8800
+
+===> (16-bit) Epoch 89 starts:
+Training: Average Generator Loss: 1454.6270
+Testing:  Average PSNR: 29.8923  SSIM: 0.8804
+
+===> (16-bit) Epoch 90 starts:
+Training: Average Generator Loss: 1452.3337
+Testing:  Average PSNR: 29.8095  SSIM: 0.8795
+
+===> (16-bit) Epoch 91 starts:
+Training: Average Generator Loss: 1444.4873
+Testing:  Average PSNR: 29.9164  SSIM: 0.8802
+
+===> (16-bit) Epoch 92 starts:
+Training: Average Generator Loss: 1468.3030
+Testing:  Average PSNR: 29.8488  SSIM: 0.8802
+
+===> (16-bit) Epoch 93 starts:
+Training: Average Generator Loss: 1454.4298
+Testing:  Average PSNR: 29.8659  SSIM: 0.8800
+
+===> (16-bit) Epoch 94 starts:
+Training: Average Generator Loss: 1449.8363
+Testing:  Average PSNR: 29.8768  SSIM: 0.8802
+
+===> (16-bit) Epoch 95 starts:
+Training: Average Generator Loss: 1444.3068
+Testing:  Average PSNR: 29.9301  SSIM: 0.8802
+
+===> (16-bit) Epoch 96 starts:
+Training: Average Generator Loss: 1451.1149
+Testing:  Average PSNR: 29.8611  SSIM: 0.8797
+
+===> (16-bit) Epoch 97 starts:
+Training: Average Generator Loss: 1449.3203
+Testing:  Average PSNR: 29.8410  SSIM: 0.8794
+
+===> (16-bit) Epoch 98 starts:
+Training: Average Generator Loss: 1446.0933
+Testing:  Average PSNR: 29.8564  SSIM: 0.8801
+
+===> (16-bit) Epoch 99 starts:
+Training: Average Generator Loss: 1449.4636
+Testing:  Average PSNR: 29.9138  SSIM: 0.8804
+
+===> (16-bit) Epoch 100 starts:
+Training: Average Generator Loss: 1444.6941
+Testing:  Average PSNR: 29.8524  SSIM: 0.8799
+
+Testing Teacher Model:  Average PSNR: 29.8038  SSIM: 0.8795
+
+
+===> (8-bit) Epoch 1 starts:
+Training: Average Generator Loss: 1442.8857
+Testing:  Average PSNR: 8.0586  SSIM: 0.3615
+
+===> (8-bit) Epoch 2 starts:
+Training: Average Generator Loss: 1438.5831
+Testing:  Average PSNR: 20.6146  SSIM: 0.7591
+
+===> (8-bit) Epoch 3 starts:
+Training: Average Generator Loss: 1432.5942
+Testing:  Average PSNR: 24.6169  SSIM: 0.8202
+
+===> (8-bit) Epoch 4 starts:
+Training: Average Generator Loss: 1429.0798
+Testing:  Average PSNR: 26.5826  SSIM: 0.8442
+
+===> (8-bit) Epoch 5 starts:
+Training: Average Generator Loss: 1451.2761
+Testing:  Average PSNR: 27.7156  SSIM: 0.8553
+
+===> (8-bit) Epoch 6 starts:
+Training: Average Generator Loss: 1415.7020
+Testing:  Average PSNR: 28.2710  SSIM: 0.8543
+
+===> (8-bit) Epoch 7 starts:
+Training: Average Generator Loss: 1436.7329
+Testing:  Average PSNR: 28.7214  SSIM: 0.8562
+
+===> (8-bit) Epoch 8 starts:
+Training: Average Generator Loss: 1442.1326
+Testing:  Average PSNR: 28.7109  SSIM: 0.8565
+
+===> (8-bit) Epoch 9 starts:
+Training: Average Generator Loss: 1433.8071
+Testing:  Average PSNR: 29.0611  SSIM: 0.8622
+
+===> (8-bit) Epoch 10 starts:
+Training: Average Generator Loss: 1423.2634
+Testing:  Average PSNR: 29.0662  SSIM: 0.8667
+
+===> (8-bit) Epoch 11 starts:
+Training: Average Generator Loss: 1430.1489
+Testing:  Average PSNR: 29.1621  SSIM: 0.8696
+
+===> (8-bit) Epoch 12 starts:
+Training: Average Generator Loss: 1458.9830
+Testing:  Average PSNR: 29.1553  SSIM: 0.8711
+
+===> (8-bit) Epoch 13 starts:
+Training: Average Generator Loss: 1451.5254
+Testing:  Average PSNR: 29.2030  SSIM: 0.8717
+
+===> (8-bit) Epoch 14 starts:
+Training: Average Generator Loss: 1424.7030
+Testing:  Average PSNR: 29.2623  SSIM: 0.8724
+
+===> (8-bit) Epoch 15 starts:
+Training: Average Generator Loss: 1433.4329
+Testing:  Average PSNR: 29.1546  SSIM: 0.8723
+
+===> (8-bit) Epoch 16 starts:
+Training: Average Generator Loss: 1428.1735
+Testing:  Average PSNR: 29.2556  SSIM: 0.8730
+
+===> (8-bit) Epoch 17 starts:
+Training: Average Generator Loss: 1414.6523
+Testing:  Average PSNR: 29.2200  SSIM: 0.8729
+
+===> (8-bit) Epoch 18 starts:
+Training: Average Generator Loss: 1433.4155
+Testing:  Average PSNR: 29.2369  SSIM: 0.8709
+
+===> (8-bit) Epoch 19 starts:
+Training: Average Generator Loss: 1436.8286
+Testing:  Average PSNR: 29.3024  SSIM: 0.8724
+
+===> (8-bit) Epoch 20 starts:
+Training: Average Generator Loss: 1449.0780
+Testing:  Average PSNR: 29.2902  SSIM: 0.8717
+
+===> (8-bit) Epoch 21 starts:
+Training: Average Generator Loss: 1435.9136
+Testing:  Average PSNR: 29.1913  SSIM: 0.8714
+
+===> (8-bit) Epoch 22 starts:
+Training: Average Generator Loss: 1437.8547
+Testing:  Average PSNR: 28.9781  SSIM: 0.8726
+
+===> (8-bit) Epoch 23 starts:
+Training: Average Generator Loss: 1446.8223
+Testing:  Average PSNR: 29.1263  SSIM: 0.8711
+
+===> (8-bit) Epoch 24 starts:
+Training: Average Generator Loss: 1425.5725
+Testing:  Average PSNR: 28.9544  SSIM: 0.8702
+
+===> (8-bit) Epoch 25 starts:
+Training: Average Generator Loss: 1417.3972
+Testing:  Average PSNR: 29.0232  SSIM: 0.8689
+
+===> (8-bit) Epoch 26 starts:
+Training: Average Generator Loss: 1438.9719
+Testing:  Average PSNR: 29.0797  SSIM: 0.8683
+
+===> (8-bit) Epoch 27 starts:
+Training: Average Generator Loss: 1434.4542
+Testing:  Average PSNR: 28.7908  SSIM: 0.8699
+
+===> (8-bit) Epoch 28 starts:
+Training: Average Generator Loss: 1430.3040
+Testing:  Average PSNR: 29.1428  SSIM: 0.8714
+
+===> (8-bit) Epoch 29 starts:
+Training: Average Generator Loss: 1438.2307
+Testing:  Average PSNR: 29.0997  SSIM: 0.8706
+
+===> (8-bit) Epoch 30 starts:
+Training: Average Generator Loss: 1433.6128
+Testing:  Average PSNR: 29.2654  SSIM: 0.8724
+
+===> (8-bit) Epoch 31 starts:
+Training: Average Generator Loss: 1450.8206
+Testing:  Average PSNR: 29.2477  SSIM: 0.8749
+
+===> (8-bit) Epoch 32 starts:
+Training: Average Generator Loss: 1426.4131
+Testing:  Average PSNR: 29.2718  SSIM: 0.8760
+
+===> (8-bit) Epoch 33 starts:
+Training: Average Generator Loss: 1420.2007
+Testing:  Average PSNR: 29.3084  SSIM: 0.8748
+
+===> (8-bit) Epoch 34 starts:
+Training: Average Generator Loss: 1435.7836
+Testing:  Average PSNR: 29.4251  SSIM: 0.8754
+
+===> (8-bit) Epoch 35 starts:
+Training: Average Generator Loss: 1436.7242
+Testing:  Average PSNR: 29.5067  SSIM: 0.8746
+
+===> (8-bit) Epoch 36 starts:
+Training: Average Generator Loss: 1423.9028
+Testing:  Average PSNR: 29.4781  SSIM: 0.8739
+
+===> (8-bit) Epoch 37 starts:
+Training: Average Generator Loss: 1416.2144
+Testing:  Average PSNR: 29.2895  SSIM: 0.8748
+
+===> (8-bit) Epoch 38 starts:
+Training: Average Generator Loss: 1448.9731
+Testing:  Average PSNR: 29.4239  SSIM: 0.8764
+
+===> (8-bit) Epoch 39 starts:
+Training: Average Generator Loss: 1435.9485
+Testing:  Average PSNR: 29.5302  SSIM: 0.8753
+
+===> (8-bit) Epoch 40 starts:
+Training: Average Generator Loss: 1441.5259
+Testing:  Average PSNR: 29.4247  SSIM: 0.8777
+
+===> (8-bit) Epoch 41 starts:
+Training: Average Generator Loss: 1442.0588
+Testing:  Average PSNR: 29.2823  SSIM: 0.8743
+
+===> (8-bit) Epoch 42 starts:
+Training: Average Generator Loss: 1423.2915
+Testing:  Average PSNR: 29.6077  SSIM: 0.8778
+
+===> (8-bit) Epoch 43 starts:
+Training: Average Generator Loss: 1443.7633
+Testing:  Average PSNR: 29.5241  SSIM: 0.8774
+
+===> (8-bit) Epoch 44 starts:
+Training: Average Generator Loss: 1426.8579
+Testing:  Average PSNR: 29.4345  SSIM: 0.8763
+
+===> (8-bit) Epoch 45 starts:
+Training: Average Generator Loss: 1425.6951
+Testing:  Average PSNR: 29.2276  SSIM: 0.8778
+
+===> (8-bit) Epoch 46 starts:
+Training: Average Generator Loss: 1434.1881
+Testing:  Average PSNR: 29.3880  SSIM: 0.8765
+
+===> (8-bit) Epoch 47 starts:
+Training: Average Generator Loss: 1435.0300
+Testing:  Average PSNR: 29.6265  SSIM: 0.8782
+
+===> (8-bit) Epoch 48 starts:
+Training: Average Generator Loss: 1450.6422
+Testing:  Average PSNR: 29.6712  SSIM: 0.8779
+
+===> (8-bit) Epoch 49 starts:
+Training: Average Generator Loss: 1427.5194
+Testing:  Average PSNR: 29.6555  SSIM: 0.8780
+
+===> (8-bit) Epoch 50 starts:
+Training: Average Generator Loss: 1425.7410
+Testing:  Average PSNR: 29.7168  SSIM: 0.8772
+
+===> (8-bit) Epoch 51 starts:
+Training: Average Generator Loss: 1425.3516
+Testing:  Average PSNR: 29.5154  SSIM: 0.8776
+
+===> (8-bit) Epoch 52 starts:
+Training: Average Generator Loss: 1439.3977
+Testing:  Average PSNR: 29.7186  SSIM: 0.8777
+
+===> (8-bit) Epoch 53 starts:
+Training: Average Generator Loss: 1441.9351
+Testing:  Average PSNR: 29.6589  SSIM: 0.8776
+
+===> (8-bit) Epoch 54 starts:
+Training: Average Generator Loss: 1416.5105
+Testing:  Average PSNR: 29.7117  SSIM: 0.8798
+
+===> (8-bit) Epoch 55 starts:
+Training: Average Generator Loss: 1416.0522
+Testing:  Average PSNR: 29.5298  SSIM: 0.8770
+
+===> (8-bit) Epoch 56 starts:
+Training: Average Generator Loss: 1407.8125
+Testing:  Average PSNR: 29.6397  SSIM: 0.8774
+
+===> (8-bit) Epoch 57 starts:
+Training: Average Generator Loss: 1428.5746
+Testing:  Average PSNR: 29.7080  SSIM: 0.8775
+
+===> (8-bit) Epoch 58 starts:
+Training: Average Generator Loss: 1439.4686
+Testing:  Average PSNR: 29.6424  SSIM: 0.8778
+
+===> (8-bit) Epoch 59 starts:
+Training: Average Generator Loss: 1430.7653
+Testing:  Average PSNR: 29.7230  SSIM: 0.8773
+
+===> (8-bit) Epoch 60 starts:
+Training: Average Generator Loss: 1427.4763
+Testing:  Average PSNR: 29.6376  SSIM: 0.8775
+
+===> (8-bit) Epoch 61 starts:
+Training: Average Generator Loss: 1432.5083
+Testing:  Average PSNR: 29.7716  SSIM: 0.8778
+
+===> (8-bit) Epoch 62 starts:
+Training: Average Generator Loss: 1421.5854
+Testing:  Average PSNR: 29.6422  SSIM: 0.8777
+
+===> (8-bit) Epoch 63 starts:
+Training: Average Generator Loss: 1427.8582
+Testing:  Average PSNR: 29.6204  SSIM: 0.8778
+
+===> (8-bit) Epoch 64 starts:
+Training: Average Generator Loss: 1417.1746
+Testing:  Average PSNR: 29.5215  SSIM: 0.8778
+
+===> (8-bit) Epoch 65 starts:
+Training: Average Generator Loss: 1436.3352
+Testing:  Average PSNR: 29.5841  SSIM: 0.8798
+
+===> (8-bit) Epoch 66 starts:
+Training: Average Generator Loss: 1423.6965
+Testing:  Average PSNR: 29.7238  SSIM: 0.8791
+
+===> (8-bit) Epoch 67 starts:
+Training: Average Generator Loss: 1432.6216
+Testing:  Average PSNR: 29.7435  SSIM: 0.8794
+
+===> (8-bit) Epoch 68 starts:
+Training: Average Generator Loss: 1435.3275
+Testing:  Average PSNR: 29.7596  SSIM: 0.8799
+
+===> (8-bit) Epoch 69 starts:
+Training: Average Generator Loss: 1430.4294
+Testing:  Average PSNR: 29.6921  SSIM: 0.8789
+
+===> (8-bit) Epoch 70 starts:
+Training: Average Generator Loss: 1429.7007
+Testing:  Average PSNR: 29.7475  SSIM: 0.8786
+
+===> (8-bit) Epoch 71 starts:
+Training: Average Generator Loss: 1435.3406
+Testing:  Average PSNR: 29.7840  SSIM: 0.8791
+
+===> (8-bit) Epoch 72 starts:
+Training: Average Generator Loss: 1436.9355
+Testing:  Average PSNR: 29.7102  SSIM: 0.8787
+
+===> (8-bit) Epoch 73 starts:
+Training: Average Generator Loss: 1441.8706
+Testing:  Average PSNR: 29.6897  SSIM: 0.8794
+
+===> (8-bit) Epoch 74 starts:
+Training: Average Generator Loss: 1426.5352
+Testing:  Average PSNR: 29.7534  SSIM: 0.8777
+
+===> (8-bit) Epoch 75 starts:
+Training: Average Generator Loss: 1428.3652
+Testing:  Average PSNR: 29.7681  SSIM: 0.8775
+
+===> (8-bit) Epoch 76 starts:
+Training: Average Generator Loss: 1424.8265
+Testing:  Average PSNR: 29.4118  SSIM: 0.8777
+
+===> (8-bit) Epoch 77 starts:
+Training: Average Generator Loss: 1425.6016
+Testing:  Average PSNR: 29.8307  SSIM: 0.8789
+
+===> (8-bit) Epoch 78 starts:
+Training: Average Generator Loss: 1445.6780
+Testing:  Average PSNR: 29.7974  SSIM: 0.8783
+
+===> (8-bit) Epoch 79 starts:
+Training: Average Generator Loss: 1454.8657
+Testing:  Average PSNR: 29.7837  SSIM: 0.8788
+
+===> (8-bit) Epoch 80 starts:
+Training: Average Generator Loss: 1435.4785
+Testing:  Average PSNR: 29.8042  SSIM: 0.8794
+
+===> (8-bit) Epoch 81 starts:
+Training: Average Generator Loss: 1451.3861
+Testing:  Average PSNR: 29.7951  SSIM: 0.8793
+
+===> (8-bit) Epoch 82 starts:
+Training: Average Generator Loss: 1451.6136
+Testing:  Average PSNR: 29.7388  SSIM: 0.8789
+
+===> (8-bit) Epoch 83 starts:
+Training: Average Generator Loss: 1419.5527
+Testing:  Average PSNR: 29.7651  SSIM: 0.8792
+
+===> (8-bit) Epoch 84 starts:
+Training: Average Generator Loss: 1434.6528
+Testing:  Average PSNR: 29.7700  SSIM: 0.8778
+
+===> (8-bit) Epoch 85 starts:
+Training: Average Generator Loss: 1438.2190
+Testing:  Average PSNR: 29.3193  SSIM: 0.8776
+
+===> (8-bit) Epoch 86 starts:
+Training: Average Generator Loss: 1447.9277
+Testing:  Average PSNR: 29.7480  SSIM: 0.8777
+
+===> (8-bit) Epoch 87 starts:
+Training: Average Generator Loss: 1438.7119
+Testing:  Average PSNR: 29.6490  SSIM: 0.8796
+
+===> (8-bit) Epoch 88 starts:
+Training: Average Generator Loss: 1438.4055
+Testing:  Average PSNR: 29.8326  SSIM: 0.8785
+
+===> (8-bit) Epoch 89 starts:
+Training: Average Generator Loss: 1438.9585
+Testing:  Average PSNR: 29.7116  SSIM: 0.8772
+
+===> (8-bit) Epoch 90 starts:
+Training: Average Generator Loss: 1435.6310
+Testing:  Average PSNR: 29.4393  SSIM: 0.8779
+
+===> (8-bit) Epoch 91 starts:
+Training: Average Generator Loss: 1447.9480
+Testing:  Average PSNR: 29.6587  SSIM: 0.8780
+
+===> (8-bit) Epoch 92 starts:
+Training: Average Generator Loss: 1438.6395
+Testing:  Average PSNR: 29.7800  SSIM: 0.8778
+
+===> (8-bit) Epoch 93 starts:
+Training: Average Generator Loss: 1446.0736
+Testing:  Average PSNR: 29.5271  SSIM: 0.8780
+
+===> (8-bit) Epoch 94 starts:
+Training: Average Generator Loss: 1442.6808
+Testing:  Average PSNR: 29.6778  SSIM: 0.8782
+
+===> (8-bit) Epoch 95 starts:
+Training: Average Generator Loss: 1426.8284
+Testing:  Average PSNR: 29.7328  SSIM: 0.8786
+
+===> (8-bit) Epoch 96 starts:
+Training: Average Generator Loss: 1431.6416
+Testing:  Average PSNR: 29.7970  SSIM: 0.8782
+
+===> (8-bit) Epoch 97 starts:
+Training: Average Generator Loss: 1425.0616
+Testing:  Average PSNR: 29.6900  SSIM: 0.8787
+
+===> (8-bit) Epoch 98 starts:
+Training: Average Generator Loss: 1414.3728
+Testing:  Average PSNR: 29.8157  SSIM: 0.8782
+
+===> (8-bit) Epoch 99 starts:
+Training: Average Generator Loss: 1437.6821
+Testing:  Average PSNR: 29.3395  SSIM: 0.8779
+
+===> (8-bit) Epoch 100 starts:
+Training: Average Generator Loss: 1444.4072
+Testing:  Average PSNR: 29.3813  SSIM: 0.8760
+
+Testing Teacher Model:  Average PSNR: 29.3286  SSIM: 0.8756
+
+
+===> (4-bit) Epoch 1 starts:
+Training: Average Generator Loss: 1480.4138
+Testing:  Average PSNR: 8.3354  SSIM: 0.2472
+
+===> (4-bit) Epoch 2 starts:
+Training: Average Generator Loss: 1456.5116
+Testing:  Average PSNR: 19.3376  SSIM: 0.6169
+
+===> (4-bit) Epoch 3 starts:
+Training: Average Generator Loss: 1463.6169
+Testing:  Average PSNR: 22.7583  SSIM: 0.6763
+
+===> (4-bit) Epoch 4 starts:
+Training: Average Generator Loss: 1451.8721
+Testing:  Average PSNR: 25.0065  SSIM: 0.7067
+
+===> (4-bit) Epoch 5 starts:
+Training: Average Generator Loss: 1472.1261
+Testing:  Average PSNR: 25.5717  SSIM: 0.7175
+
+===> (4-bit) Epoch 6 starts:
+Training: Average Generator Loss: 1468.9044
+Testing:  Average PSNR: 25.3233  SSIM: 0.7225
+
+===> (4-bit) Epoch 7 starts:
+Training: Average Generator Loss: 1487.5054
+Testing:  Average PSNR: 26.2425  SSIM: 0.7212
+
+===> (4-bit) Epoch 8 starts:
+Training: Average Generator Loss: 1474.4763
+Testing:  Average PSNR: 26.3875  SSIM: 0.7312
+
+===> (4-bit) Epoch 9 starts:
+Training: Average Generator Loss: 1461.2734
+Testing:  Average PSNR: 26.3571  SSIM: 0.7403
+
+===> (4-bit) Epoch 10 starts:
+Training: Average Generator Loss: 1465.1748
+Testing:  Average PSNR: 26.3720  SSIM: 0.7392
+
+===> (4-bit) Epoch 11 starts:
+Training: Average Generator Loss: 1465.2833
+Testing:  Average PSNR: 25.9327  SSIM: 0.7402
+
+===> (4-bit) Epoch 12 starts:
+Training: Average Generator Loss: 1460.4493
+Testing:  Average PSNR: 26.3750  SSIM: 0.7481
+
+===> (4-bit) Epoch 13 starts:
+Training: Average Generator Loss: 1457.4944
+Testing:  Average PSNR: 26.7149  SSIM: 0.7504
+
+===> (4-bit) Epoch 14 starts:
+Training: Average Generator Loss: 1472.5059
+Testing:  Average PSNR: 26.3462  SSIM: 0.7508
+
+===> (4-bit) Epoch 15 starts:
+Training: Average Generator Loss: 1480.8364
+Testing:  Average PSNR: 26.7620  SSIM: 0.7515
+
+===> (4-bit) Epoch 16 starts:
+Training: Average Generator Loss: 1451.5028
+Testing:  Average PSNR: 26.8214  SSIM: 0.7535
+
+===> (4-bit) Epoch 17 starts:
+Training: Average Generator Loss: 1473.3943
+Testing:  Average PSNR: 26.7696  SSIM: 0.7545
+
+===> (4-bit) Epoch 18 starts:
+Training: Average Generator Loss: 1475.0187
+Testing:  Average PSNR: 26.4775  SSIM: 0.7560
+
+===> (4-bit) Epoch 19 starts:
+Training: Average Generator Loss: 1470.1672
+Testing:  Average PSNR: 26.8315  SSIM: 0.7604
+
+===> (4-bit) Epoch 20 starts:
+Training: Average Generator Loss: 1458.1047
+Testing:  Average PSNR: 26.1753  SSIM: 0.7530
+
+===> (4-bit) Epoch 21 starts:
+Training: Average Generator Loss: 1463.1447
+Testing:  Average PSNR: 26.6566  SSIM: 0.7647
+
+===> (4-bit) Epoch 22 starts:
+Training: Average Generator Loss: 1477.2729
+Testing:  Average PSNR: 26.2538  SSIM: 0.7572
+
+===> (4-bit) Epoch 23 starts:
+Training: Average Generator Loss: 1471.8516
+Testing:  Average PSNR: 26.1256  SSIM: 0.7568
+
+===> (4-bit) Epoch 24 starts:
+Training: Average Generator Loss: 1463.4406
+Testing:  Average PSNR: 26.9252  SSIM: 0.7626
+
+===> (4-bit) Epoch 25 starts:
+Training: Average Generator Loss: 1460.9908
+Testing:  Average PSNR: 26.7286  SSIM: 0.7607
+
+===> (4-bit) Epoch 26 starts:
+Training: Average Generator Loss: 1462.6031
+Testing:  Average PSNR: 26.9217  SSIM: 0.7642
+
+===> (4-bit) Epoch 27 starts:
+Training: Average Generator Loss: 1463.2844
+Testing:  Average PSNR: 26.3781  SSIM: 0.7654
+
+===> (4-bit) Epoch 28 starts:
+Training: Average Generator Loss: 1458.0122
+Testing:  Average PSNR: 27.0181  SSIM: 0.7631
+
+===> (4-bit) Epoch 29 starts:
+Training: Average Generator Loss: 1458.4919
+Testing:  Average PSNR: 26.9570  SSIM: 0.7689
+
+===> (4-bit) Epoch 30 starts:
+Training: Average Generator Loss: 1472.3008
+Testing:  Average PSNR: 26.3276  SSIM: 0.7695
+
+===> (4-bit) Epoch 31 starts:
+Training: Average Generator Loss: 1458.5710
+Testing:  Average PSNR: 27.2216  SSIM: 0.7723
+
+===> (4-bit) Epoch 32 starts:
+Training: Average Generator Loss: 1465.5715
+Testing:  Average PSNR: 27.0399  SSIM: 0.7684
+
+===> (4-bit) Epoch 33 starts:
+Training: Average Generator Loss: 1471.8138
+Testing:  Average PSNR: 26.9138  SSIM: 0.7699
+
+===> (4-bit) Epoch 34 starts:
+Training: Average Generator Loss: 1450.7451
+Testing:  Average PSNR: 26.8820  SSIM: 0.7599
+
+===> (4-bit) Epoch 35 starts:
+Training: Average Generator Loss: 1467.2380
+Testing:  Average PSNR: 26.9947  SSIM: 0.7696
+
+===> (4-bit) Epoch 36 starts:
+Training: Average Generator Loss: 1476.8716
+Testing:  Average PSNR: 26.9429  SSIM: 0.7717
+
+===> (4-bit) Epoch 37 starts:
+Training: Average Generator Loss: 1477.3140
+Testing:  Average PSNR: 26.8881  SSIM: 0.7751
+
+===> (4-bit) Epoch 38 starts:
+Training: Average Generator Loss: 1471.5988
+Testing:  Average PSNR: 27.1536  SSIM: 0.7693
+
+===> (4-bit) Epoch 39 starts:
+Training: Average Generator Loss: 1463.1311
+Testing:  Average PSNR: 27.0462  SSIM: 0.7736
+
+===> (4-bit) Epoch 40 starts:
+Training: Average Generator Loss: 1479.7832
+Testing:  Average PSNR: 27.0361  SSIM: 0.7774
+
+===> (4-bit) Epoch 41 starts:
+Training: Average Generator Loss: 1470.0645
+Testing:  Average PSNR: 26.9971  SSIM: 0.7747
+
+===> (4-bit) Epoch 42 starts:
+Training: Average Generator Loss: 1469.8489
+Testing:  Average PSNR: 27.2259  SSIM: 0.7751
+
+===> (4-bit) Epoch 43 starts:
+Training: Average Generator Loss: 1463.6780
+Testing:  Average PSNR: 27.0662  SSIM: 0.7700
+
+===> (4-bit) Epoch 44 starts:
+Training: Average Generator Loss: 1470.1460
+Testing:  Average PSNR: 26.4112  SSIM: 0.7718
+
+===> (4-bit) Epoch 45 starts:
+Training: Average Generator Loss: 1467.7119
+Testing:  Average PSNR: 27.0218  SSIM: 0.7729
+
+===> (4-bit) Epoch 46 starts:
+Training: Average Generator Loss: 1466.5149
+Testing:  Average PSNR: 26.1267  SSIM: 0.7731
+
+===> (4-bit) Epoch 47 starts:
+Training: Average Generator Loss: 1457.8038
+Testing:  Average PSNR: 26.4185  SSIM: 0.7725
+
+===> (4-bit) Epoch 48 starts:
+Training: Average Generator Loss: 1461.9756
+Testing:  Average PSNR: 26.4236  SSIM: 0.7756
+
+===> (4-bit) Epoch 49 starts:
+Training: Average Generator Loss: 1477.0505
+Testing:  Average PSNR: 26.2370  SSIM: 0.7761
+
+===> (4-bit) Epoch 50 starts:
+Training: Average Generator Loss: 1474.4546
+Testing:  Average PSNR: 27.1903  SSIM: 0.7735
+
+===> (4-bit) Epoch 51 starts:
+Training: Average Generator Loss: 1460.1122
+Testing:  Average PSNR: 26.7896  SSIM: 0.7764
+
+===> (4-bit) Epoch 52 starts:
+Training: Average Generator Loss: 1465.1445
+Testing:  Average PSNR: 27.2956  SSIM: 0.7742
+
+===> (4-bit) Epoch 53 starts:
+Training: Average Generator Loss: 1467.5210
+Testing:  Average PSNR: 27.3591  SSIM: 0.7763
+
+===> (4-bit) Epoch 54 starts:
+Training: Average Generator Loss: 1452.0566
+Testing:  Average PSNR: 26.2386  SSIM: 0.7811
+
+===> (4-bit) Epoch 55 starts:
+Training: Average Generator Loss: 1480.1089
+Testing:  Average PSNR: 27.1182  SSIM: 0.7782
+
+===> (4-bit) Epoch 56 starts:
+Training: Average Generator Loss: 1476.5948
+Testing:  Average PSNR: 27.1228  SSIM: 0.7768
+
+===> (4-bit) Epoch 57 starts:
+Training: Average Generator Loss: 1468.3965
+Testing:  Average PSNR: 27.0329  SSIM: 0.7804
+
+===> (4-bit) Epoch 58 starts:
+Training: Average Generator Loss: 1449.0502
+Testing:  Average PSNR: 27.1459  SSIM: 0.7791
+
+===> (4-bit) Epoch 59 starts:
+Training: Average Generator Loss: 1470.9102
+Testing:  Average PSNR: 27.4476  SSIM: 0.7825
+
+===> (4-bit) Epoch 60 starts:
+Training: Average Generator Loss: 1462.6885
+Testing:  Average PSNR: 26.5329  SSIM: 0.7804
+
+===> (4-bit) Epoch 61 starts:
+Training: Average Generator Loss: 1460.1550
+Testing:  Average PSNR: 26.4406  SSIM: 0.7812
+
+===> (4-bit) Epoch 62 starts:
+Training: Average Generator Loss: 1453.9919
+Testing:  Average PSNR: 27.1328  SSIM: 0.7811
+
+===> (4-bit) Epoch 63 starts:
+Training: Average Generator Loss: 1465.4500
+Testing:  Average PSNR: 26.7505  SSIM: 0.7793
+
+===> (4-bit) Epoch 64 starts:
+Training: Average Generator Loss: 1461.7156
+Testing:  Average PSNR: 26.6034  SSIM: 0.7811
+
+===> (4-bit) Epoch 65 starts:
+Training: Average Generator Loss: 1472.6266
+Testing:  Average PSNR: 27.1842  SSIM: 0.7808
+
+===> (4-bit) Epoch 66 starts:
+Training: Average Generator Loss: 1457.2673
+Testing:  Average PSNR: 27.0881  SSIM: 0.7817
+
+===> (4-bit) Epoch 67 starts:
+Training: Average Generator Loss: 1460.8018
+Testing:  Average PSNR: 27.2711  SSIM: 0.7812
+
+===> (4-bit) Epoch 68 starts:
+Training: Average Generator Loss: 1479.5415
+Testing:  Average PSNR: 27.4907  SSIM: 0.7835
+
+===> (4-bit) Epoch 69 starts:
+Training: Average Generator Loss: 1478.2930
+Testing:  Average PSNR: 27.4374  SSIM: 0.7835
+
+===> (4-bit) Epoch 70 starts:
+Training: Average Generator Loss: 1466.8517
+Testing:  Average PSNR: 27.3296  SSIM: 0.7860
+
+===> (4-bit) Epoch 71 starts:
+Training: Average Generator Loss: 1480.4360
+Testing:  Average PSNR: 27.2386  SSIM: 0.7841
+
+===> (4-bit) Epoch 72 starts:
+Training: Average Generator Loss: 1461.8678
+Testing:  Average PSNR: 27.1911  SSIM: 0.7821
+
+===> (4-bit) Epoch 73 starts:
+Training: Average Generator Loss: 1468.2823
+Testing:  Average PSNR: 25.3277  SSIM: 0.7803
+
+===> (4-bit) Epoch 74 starts:
+Training: Average Generator Loss: 1471.2775
+Testing:  Average PSNR: 26.3699  SSIM: 0.7788
+
+===> (4-bit) Epoch 75 starts:
+Training: Average Generator Loss: 1476.0024
+Testing:  Average PSNR: 27.3387  SSIM: 0.7816
+
+===> (4-bit) Epoch 76 starts:
+Training: Average Generator Loss: 1474.6719
+Testing:  Average PSNR: 26.3028  SSIM: 0.7797
+
+===> (4-bit) Epoch 77 starts:
+Training: Average Generator Loss: 1477.6118
+Testing:  Average PSNR: 27.4426  SSIM: 0.7816
+
+===> (4-bit) Epoch 78 starts:
+Training: Average Generator Loss: 1464.9580
+Testing:  Average PSNR: 26.5412  SSIM: 0.7812
+
+===> (4-bit) Epoch 79 starts:
+Training: Average Generator Loss: 1473.2195
+Testing:  Average PSNR: 26.7755  SSIM: 0.7813
+
+===> (4-bit) Epoch 80 starts:
+Training: Average Generator Loss: 1469.9723
+Testing:  Average PSNR: 27.3487  SSIM: 0.7795
+
+===> (4-bit) Epoch 81 starts:
+Training: Average Generator Loss: 1489.6505
+Testing:  Average PSNR: 26.3825  SSIM: 0.7812
+
+===> (4-bit) Epoch 82 starts:
+Training: Average Generator Loss: 1460.6582
+Testing:  Average PSNR: 26.9899  SSIM: 0.7863
+
+===> (4-bit) Epoch 83 starts:
+Training: Average Generator Loss: 1480.2732
+Testing:  Average PSNR: 26.7125  SSIM: 0.7812
+
+===> (4-bit) Epoch 84 starts:
+Training: Average Generator Loss: 1459.4229
+Testing:  Average PSNR: 26.4267  SSIM: 0.7822
+
+===> (4-bit) Epoch 85 starts:
+Training: Average Generator Loss: 1465.7615
+Testing:  Average PSNR: 26.9455  SSIM: 0.7820
+
+===> (4-bit) Epoch 86 starts:
+Training: Average Generator Loss: 1479.6125
+Testing:  Average PSNR: 26.8380  SSIM: 0.7818
+
+===> (4-bit) Epoch 87 starts:
+Training: Average Generator Loss: 1469.3005
+Testing:  Average PSNR: 27.3746  SSIM: 0.7852
+
+===> (4-bit) Epoch 88 starts:
+Training: Average Generator Loss: 1467.3000
+Testing:  Average PSNR: 27.4350  SSIM: 0.7856
+
+===> (4-bit) Epoch 89 starts:
+Training: Average Generator Loss: 1478.5056
+Testing:  Average PSNR: 27.1132  SSIM: 0.7806
+
+===> (4-bit) Epoch 90 starts:
+Training: Average Generator Loss: 1475.8397
+Testing:  Average PSNR: 26.9702  SSIM: 0.7854
+
+===> (4-bit) Epoch 91 starts:
+Training: Average Generator Loss: 1476.3430
+Testing:  Average PSNR: 27.4324  SSIM: 0.7847
+
+===> (4-bit) Epoch 92 starts:
+Training: Average Generator Loss: 1455.0784
+Testing:  Average PSNR: 27.1134  SSIM: 0.7819
+
+===> (4-bit) Epoch 93 starts:
+Training: Average Generator Loss: 1482.0444
+Testing:  Average PSNR: 27.3347  SSIM: 0.7853
+
+===> (4-bit) Epoch 94 starts:
+Training: Average Generator Loss: 1468.9333
+Testing:  Average PSNR: 26.1109  SSIM: 0.7801
+
+===> (4-bit) Epoch 95 starts:
+Training: Average Generator Loss: 1467.0200
+Testing:  Average PSNR: 26.5762  SSIM: 0.7843
+
+===> (4-bit) Epoch 96 starts:
+Training: Average Generator Loss: 1466.2506
+Testing:  Average PSNR: 27.4775  SSIM: 0.7846
+
+===> (4-bit) Epoch 97 starts:
+Training: Average Generator Loss: 1478.1316
+Testing:  Average PSNR: 27.0265  SSIM: 0.7858
+
+===> (4-bit) Epoch 98 starts:
+Training: Average Generator Loss: 1456.8430
+Testing:  Average PSNR: 27.1443  SSIM: 0.7878
+
+===> (4-bit) Epoch 99 starts:
+Training: Average Generator Loss: 1461.5894
+Testing:  Average PSNR: 27.2718  SSIM: 0.7837
+
+===> (4-bit) Epoch 100 starts:
+Training: Average Generator Loss: 1472.8882
+Testing:  Average PSNR: 27.1909  SSIM: 0.7884

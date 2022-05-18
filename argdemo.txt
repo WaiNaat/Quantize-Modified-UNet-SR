@@ -1,1 +1,1 @@
-python main.py -m unet -uf 2 -lr 0.001 -n 300
+python main.py -m unet -uf 2 -lr 0.001 -n 100 -b 16 --progressive 1

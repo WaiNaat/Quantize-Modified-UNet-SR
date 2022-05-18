@@ -20,11 +20,11 @@ import os
 import logging
 import sys
 import copy
-from zsnet_sr import TVLoss, GeneratorINE1
+from Unet.zsnet_sr import TVLoss, GeneratorINE1
 import torch.optim as optim
-import cv2
+#import cv2
 import matplotlib
-from bicubic_sr import *
+from Unet.bicubic_sr import *
 import torchvision.transforms as transforming
 from quantization_utils.quant_modules import *
 
@@ -47,6 +47,9 @@ class unetTrainer(object):
         self.upscale_factor = config.upscale_factor
         self.training_loader = training_loader
         self.testing_loader = testing_loader
+        self.batchSize = config.batchSize
+
+        self.quant_bit = 4
 
         self.save_path = os.path.join("result")
         self.trained_model_path = "result_BSD300_mixGE/my_model.pth"
@@ -71,7 +74,7 @@ class unetTrainer(object):
         logger.setLevel(logging.INFO)
         return logger
 
-    def build_model(self):
+    def build_model(self, quant_bit):
         # self.model = Net(num_channels=3, base_filter=64, upscale_factor=self.upscale_factor).to(self.device)
         if self.upscale_factor == 2:
             self.model = UNet2(3, 3).to(self.device)
@@ -93,7 +96,7 @@ class unetTrainer(object):
 
         # quantize model
         self.model.load_state_dict(torch.load(self.trained_model_path))
-        self.model = self.quantize_model(self.model)
+        self.model = self.quantize_model(self.model, quant_bit=quant_bit)
         self.model.to(self.device)
 
         if self.CUDA:
@@ -112,14 +115,14 @@ class unetTrainer(object):
         torch.save(self.model.state_dict(), os.path.join(self.save_path, model_name))
         print("Model saved.")
 
-    def quantize_model(self, model):
+    def quantize_model(self, model, quant_bit):
         """
         Recursively quantize a pretrained single-precision model to int8 quantized model
         model: pretrained single-precision model
         """
 
-        weight_bit = 8
-        act_bit = 8
+        weight_bit = quant_bit
+        act_bit = quant_bit
 
         # quantize convolutional and linear layers
         if type(model) == nn.Conv2d:
@@ -143,60 +146,83 @@ class unetTrainer(object):
         elif type(model) == nn.Sequential:
             mods = []
             for n, m in model.named_children():
-                mods.append(self.quantize_model(m))
+                mods.append(self.quantize_model(m, quant_bit))
             return nn.Sequential(*mods)
         else:
             q_model = copy.deepcopy(model)
             for attr in dir(model):
                 mod = getattr(model, attr)
                 if isinstance(mod, nn.Module) and 'norm' not in attr:
-                    setattr(q_model, attr, self.quantize_model(mod))
+                    setattr(q_model, attr, self.quantize_model(mod, quant_bit))
             return q_model
 
-    def train(self, losses, generator1, optimizer_G1, criterion,bicubic_s):
+    def train(self, losses, generator1, optimizer_G1, criterion, bicubic_s):
         self.model.train()
         generator1.train()
+
+        # make generator input
         z = Variable(
-            torch.randn(16, 128)).cuda()  # z = Variable(torch.randn(args.batchSize, args.latent)).cuda()
+            torch.randn(self.batchSize, 128)).cuda()  # z = Variable(torch.randn(args.batchSize, args.latent)).cuda()
         scale = 2
+
+        # make fake data
         input_data = generator1(z)
         input_data = torch.clamp(input_data, min=0, max=1)
         split = input_data.split(1, dim=0)
-        for t in range(16):
+
+        # train student model
+        for t in range(self.batchSize):
             #matplotlib.pyplot.imshow(img.detach().cpu().numpy(),cmap='gray')
             #matplotlib.pyplot.savefig('testingwork')
             #matplotlib.pyplot.show()
+            self.optimizer.zero_grad()
+
             img = split[t]
             teacher_sr = self.model_teacher(img)
-            self.optimizer.zero_grad()
             sr_img = self.model(img)
-            loss = self.criterion(sr_img, teacher_sr)
+
+            # compute KD loss (L1)
+            loss = self.criterion_3(sr_img, teacher_sr)
             loss.backward(retain_graph=True)
             #nn.utils.clip_grad_norm_(self.model.parameters(), 0.4)
             self.optimizer.step()
 
         losses.update(loss.data.item(), input_data.size(0))
-        for k in range(16):
+
+        # train generator model
+        for k in range(self.batchSize):
+
+            # generate fake data
             z = Variable(torch.randn(1, 128)).cuda()
             scale = 2
             lr_gens = generator1(z)
             lr_gens = torch.clamp(lr_gens, min=0, max=1)
+
+            # calculate loss
             for s in range(1):
                 optimizer_G1.zero_grad()
 
                 lr_gens_bicubic = torch.clamp(lr_gens, min=0, max=1)
 
                 teacher_sr = self.model_teacher(lr_gens_bicubic)
+                teacher_sr_lr = bicubic_s(teacher_sr, scale=1. / scale)  # new bicubic ; align
+                teacher_sr_lr = torch.clamp(teacher_sr_lr, min=0, max=1)
+
+                gen_loss = criterion(lr_gens, teacher_sr_lr)
+
+                '''
                 genkd_loss = - torch.log(1 + criterion(self.model(lr_gens_bicubic), teacher_sr))
                 teacher_sr_lr = bicubic_s(teacher_sr, scale=1. / scale)  # new bicubic ; align
                 teacher_sr_lr = torch.clamp(teacher_sr_lr, min=0, max=1)
                 recon_loss = criterion(lr_gens, teacher_sr_lr)
                 gen_loss = 1.0 * genkd_loss + recon_loss
+                '''
 
                 gen_loss.backward(retain_graph=True)
 
                 optimizer_G1.step()
-        self.logger.info("Training: Average Loss: {:.4f}".format(gen_loss ))
+        
+        self.logger.info("Training: Average Generator Loss: {:.4f}".format(gen_loss))
 
         # self.model_teacher.eval()
 
@@ -304,7 +330,7 @@ class unetTrainer(object):
 
     def run(self):
         # load model
-        self.build_model()
+        self.build_model(self.quant_bit)
 
         self.model_teacher.load_state_dict(torch.load(self.trained_model_path))
         self.model_teacher.to(self.device)
@@ -314,28 +340,108 @@ class unetTrainer(object):
         # test teacher model
         self.test_teacher()
 
-        # train
+        # generator settings
         losses = AverageMeter()
+
         generator1 = GeneratorINE1(img_size=256 // 2, channels=3, latent=128).cuda()
         print("The architecture of generator: ")
         print(generator1)
+
         optimizer_G1 = torch.optim.Adam(generator1.parameters(), lr=1e-5)
         lr_schedulerG1 = optim.lr_scheduler.StepLR(optimizer_G1, step_size=10, gamma=0.1)
         lr_scheduler = optim.lr_scheduler.StepLR(self.optimizer, step_size=10, gamma=0.1)
-        criterion = nn.MSELoss(reduction='sum')
+
+        #criterion = nn.MSELoss(reduction='sum')
+        criterion = nn.L1Loss(reduction='sum')
         criterion = criterion.cuda()
         bicubic_s = bicubic_sr()
+
+        # train
         for epoch in range(1, self.nEpochs + 1):
             self.logger.info("\n===> Epoch {} starts:".format(epoch))
-            self.train(losses, generator1, optimizer_G1, criterion,bicubic_s)
+            self.train(losses, generator1, optimizer_G1, criterion, bicubic_s)
             self.test(epoch)
             lr_scheduler.step()
             lr_schedulerG1.step()
             if epoch == self.nEpochs:
                 self.save_model()
+    
+    def run_progressive(self):
+        # quantization bit settings
+        quant_bits = [24, 16, 8]
+
+        # Initial training
+        # load model
+        self.build_model(quant_bits[0])
+        self.model_teacher.load_state_dict(torch.load(self.trained_model_path))
+        self.model_teacher.to(self.device)
+
+        self.logger.info(self.model)
+
+        # generator settings
+        losses = AverageMeter()
+
+        generator1 = GeneratorINE1(img_size=256 // 2, channels=3, latent=128).cuda()
+        print("The architecture of generator: ")
+        print(generator1)
+
+        optimizer_G1 = torch.optim.Adam(generator1.parameters(), lr=1e-5)
+        lr_schedulerG1 = optim.lr_scheduler.StepLR(optimizer_G1, step_size=10, gamma=0.1)
+        lr_scheduler = optim.lr_scheduler.StepLR(self.optimizer, step_size=10, gamma=0.1)
+
+        #criterion = nn.MSELoss(reduction='sum')
+        criterion = nn.L1Loss(reduction='sum')
+        criterion = criterion.cuda()
+        bicubic_s = bicubic_sr()
+
+        # test teacher model
+        self.test_teacher()
+
+        # train
+        for epoch in range(1, self.nEpochs + 1):
+            self.logger.info(f"\n===> ({quant_bits[0]}-bit) Epoch {epoch} starts:")
+            self.train(losses, generator1, optimizer_G1, criterion, bicubic_s)
+            self.test(epoch)
+            lr_scheduler.step()
+            lr_schedulerG1.step()
+        
+        # progressive training
+        for qb in quant_bits[1:]:
+                
+            # change teacher model
+            self.model_teacher = self.model
+            self.model_teacher.to(self.device)
+
+            # make new model
+            self.model = UNet2(3, 3).to(self.device)
+            self.model.weight_init(mean=0.0, std=0.01)
+
+            # quantize model
+            self.model.load_state_dict(torch.load(self.trained_model_path))
+            self.model = self.quantize_model(self.model, qb)
+            self.model.to(self.device)
+
+            self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr, weight_decay=1e-6)  # ,weight_decay=1e-4
+            self.scheduler = torch.optim.lr_scheduler.MultiStepLR(self.optimizer,
+                                                                milestones=[50, 100, 150, 200, 300, 400, 500, 1000],
+                                                                gamma=0.5)
+            
+            # test teacher model
+            self.test_teacher()
+
+            # train
+            for epoch in range(1, self.nEpochs + 1):
+                self.logger.info(f"\n===> ({qb}-bit) Epoch {epoch} starts:")
+                self.train(losses, generator1, optimizer_G1, criterion, bicubic_s)
+                self.test(epoch)
+                lr_scheduler.step()
+                lr_schedulerG1.step()
+        
+        self.save_model()
+
 
     def testOnly(self):
-        self.build_model()
+        self.build_model(self.quant_bit)
         self.model.load_state_dict(torch.load("result/my_model.pth"))
         self.model.to(self.device)
         self.test(self.nEpochs)
