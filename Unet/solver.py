@@ -437,6 +437,7 @@ class unetTrainer(object):
                 lr_scheduler.step()
                 lr_schedulerG1.step()
         
+        self.logger.info(self.model)
         self.save_model()
 
 
