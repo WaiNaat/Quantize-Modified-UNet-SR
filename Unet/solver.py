@@ -49,7 +49,7 @@ class unetTrainer(object):
         self.testing_loader = testing_loader
         self.batchSize = config.batchSize
 
-        self.quant_bit = 4
+        self.quant_bit = 6
 
         self.save_path = os.path.join("result")
         self.trained_model_path = "result_BSD300_mixGE/my_model.pth"
@@ -368,7 +368,7 @@ class unetTrainer(object):
     
     def run_progressive(self):
         # quantization bit settings
-        quant_bits = [24, 16, 8]
+        quant_bits = [24, 18, 12, 6]
 
         # Initial training
         # load model
