@@ -1,7 +1,7 @@
 # Progressive Data-Free Quantization of Modified U-Net
 
 ## Introduction
-![Flow chart](fig.png)
+![Flow chart](fig.gif)
 
 This repository contains Progressive Data-Free Quantization of Modified U-Net for SISR.
 
