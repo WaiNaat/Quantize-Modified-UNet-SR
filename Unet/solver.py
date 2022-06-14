@@ -23,7 +23,7 @@ import copy
 from Unet.zsnet_sr import TVLoss, GeneratorINE1
 import torch.optim as optim
 #import cv2
-import matplotlib
+#import matplotlib
 from Unet.bicubic_sr import *
 import torchvision.transforms as transforming
 from quantization_utils.quant_modules import *
@@ -172,9 +172,6 @@ class unetTrainer(object):
 
         # train student model
         for t in range(self.batchSize):
-            #matplotlib.pyplot.imshow(img.detach().cpu().numpy(),cmap='gray')
-            #matplotlib.pyplot.savefig('testingwork')
-            #matplotlib.pyplot.show()
             self.optimizer.zero_grad()
 
             img = split[t]
@@ -184,7 +181,7 @@ class unetTrainer(object):
             # compute KD loss (L1)
             loss = self.criterion_3(sr_img, teacher_sr)
             loss.backward(retain_graph=True)
-            #nn.utils.clip_grad_norm_(self.model.parameters(), 0.4)
+            
             self.optimizer.step()
 
         losses.update(loss.data.item(), input_data.size(0))
@@ -210,67 +207,12 @@ class unetTrainer(object):
 
                 gen_loss = criterion(lr_gens, teacher_sr_lr)
 
-                '''
-                genkd_loss = - torch.log(1 + criterion(self.model(lr_gens_bicubic), teacher_sr))
-                teacher_sr_lr = bicubic_s(teacher_sr, scale=1. / scale)  # new bicubic ; align
-                teacher_sr_lr = torch.clamp(teacher_sr_lr, min=0, max=1)
-                recon_loss = criterion(lr_gens, teacher_sr_lr)
-                gen_loss = 1.0 * genkd_loss + recon_loss
-                '''
-
                 gen_loss.backward(retain_graph=True)
 
                 optimizer_G1.step()
         
         self.logger.info("Training: Average Generator Loss: {:.4f}".format(gen_loss))
-
-        # self.model_teacher.eval()
-
-        '''
-        # predict
-        gen_loss.backward()
-            student_sr = self.model(tem_img)
-            teacher_sr = self.model_teacher(tem_img)
-            genkd_loss = - torch.log(1 + criterion(student_sr, teacher_sr))
-            teacher_sr_lr = bicubic_s(teacher_sr,scale=1./scale)  # new bicubic ; align
-            teacher_sr_lr = torch.clamp(teacher_sr_lr, min=0, max=1)
-            recon_loss = criterion(tem_img, teacher_sr_lr)
-            print(tem_img.size())
-            print(teacher_sr_lr.size())
-
-            gen_loss = genkd_loss + recon_loss
-        prediction = self.model(data)
-        prediction_teacher = self.model_teacher(data)
-
-        # calculate kd loss(L1)
-        loss = self.criterion_3(prediction, prediction_teacher)
-
-        # MSE loss
-        #loss = self.criterion(prediction, prediction_teacher)
-
-        # MixGE loss
-        #mseLoss = self.criterion(prediction, prediction_teacher)
-        #geLoss = self.criterion_2(prediction, prediction_teacher)
-        #loss = mseLoss + 0.1 * geLoss
-        '''
-
-        # L1 loss
-        # loss = self.criterion_3(prediction, target)
-
-        # MSE loss
-        # loss = self.criterion(prediction, target)
-
-        # MixGE loss
-
-        # new MixGE loss
-        # Van Der Jeught, S., Muyshondt, P. G., & Lobato, I. (2021). Optimized loss function in deep learning profilometry for improved prediction performance. Journal of Physics: Photonics, 3(2), 024014.
-        # l1Loss = self.criterion_3(prediction, target)
-        # geLoss = self.criterion_2(prediction, target)
-        # loss = 0.5 * l1Loss + 0.5 * geLoss
-
-        # print(str(loss1.cpu().detach().numpy())+'  '+str(loss_ssim.cpu().detach().numpy()))
-
-        # progress_bar(batch_num, len(self.training_loader), 'Loss: %.4f' % (train_loss / (batch_num + 1)))
+        
 
     def test(self, epoch):
         self.model.eval()
