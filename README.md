@@ -1,5 +1,14 @@
 # Progressive Data-Free Quantization of Modified U-Net
 
+## Introduction
+![Flow chart](fig.png)
+
+This repository contains Progressive Data-Free Quantization of Modified U-Net for SISR.
+
+If we consider quantization to 4-bit, we first set student model to 24-bit and train that model.   
+After training 24-bit quantized model, we set this model to teacher and make new 16-bit student model.     
+We repeat this process for 8-bit student and 4-bit student model. 
+
 ## Referece
 ### Code
 
